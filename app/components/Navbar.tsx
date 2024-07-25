@@ -82,15 +82,15 @@ export default function NavBar() {
           className="px-2 bg-white w-full md:hidden lg:hidden border border-gray-50"
         >
           <span className="block flex-col justify-items-center space-y-3 w-full border-red-200 border">
-            <Link href={"/pages/dashboard"} className="text-center block ">
+            {/* <Link href={"/pages/dashboard"} className="text-center block ">
               Dashboard
-            </Link>
+            </Link> */}
             <Link href={"/pages/donateBook"} className="text-center block ">
               Donate Book
             </Link>
-            <Link href={"/pages/dashboard"} className="text-center block ">
+            {/* <Link href={"/pages/dashboard"} className="text-center block ">
               lllalka
-            </Link>
+            </Link> */}
           </span>
 
           <div className="w-full flex justify-between my-4">

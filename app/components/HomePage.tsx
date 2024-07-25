@@ -7,6 +7,7 @@ export default function HomePage() {
       <NavBar />
       <main className="w-full mt-3 md:hidden">
         <MobileBanner />
+        Mobile view only
       </main>
     </>
   );

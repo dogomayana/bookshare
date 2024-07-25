@@ -22,7 +22,7 @@ export default function MobileBanner() {
           style={{ width: "100%", height: "100%", objectFit: "fill" }}
           priority={true}
         />
-        <p className="text-center text-sm mt-2 text-gray-700">
+        <p className="text-center text-sm mt-4 text-gray-700">
           Join Bookshare, the free digital library for everyone. Millions
         </p>
         <p className="text-center text-sm mt-1 text-gray-700">
@@ -32,14 +32,30 @@ export default function MobileBanner() {
           Donate, Access, Read
         </p>
 
-        <div className="flex w-full border border-red-500 my-3">
+        <div className="flex w-full border border-blue-50 mt-8">
           <input
             type="text"
-            className="p-3 w-11/12 block shadow-md rounded-md"
+            placeholder="search"
+            className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
           />
           <button className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100">
             &#128269;
           </button>
+        </div>
+
+        <div className="w-full flex justify-between mt-7 mb-4">
+          <Link
+            href={"/pages/signUp"}
+            className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
+          >
+            Donate now
+          </Link>
+          <Link
+            href={"/pages/logIn"}
+            className="w-5/12 bg-blue-100 text-[#0095eb] text-center text-sm font-semibold rounded-md p-3 block"
+          >
+            Download now
+          </Link>
         </div>
       </div>
     </>

@@ -1,40 +1,44 @@
 "use client";
+
+import NavBar from "@/app/components/Navbar";
+
 function DonateBook() {
   return (
     <>
-      <form className="w-full p-1 md:w-6/12 mx-auto md:p-2">
-        <label htmlFor="Book Name" className="block">
-          <span className="my-2 block text-gray-600 text-[15px]">
+      <NavBar />
+      <form className="w-full p-2 md:w-6/12 mx-auto md:p-2">
+        <label htmlFor="bookName" className="block">
+          <span className="my-3 block text-gray-600 text-[15px]">
             Book Name
           </span>
           <input
             type="text"
             name="bookName"
-            id=""
+            id="bookName"
             //   onChange={handleChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter book name"
           />
         </label>
-        <label htmlFor="ISBN" className="block">
-          <span className="my-2 block text-gray-600 text-[15px]">ISBN</span>
+        <label htmlFor="isbn" className="block">
+          <span className="my-3 block text-gray-600 text-[15px]">ISBN</span>
           <input
             type="text"
             name="isbn"
-            id=""
+            id="isbn"
             //   onChange={handleChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter ISBN"
           />
         </label>
-        <label htmlFor="Author Name" className="block">
-          <span className="my-2 block text-gray-600 text-[15px]">
+        <label htmlFor="authorName" className="block">
+          <span className="my-3 block text-gray-600 text-[15px]">
             Author Name
           </span>
           <input
             type="text"
             name="authorName"
-            id=""
+            id="authorName"
             //   onChange={handleChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter Author Name"
@@ -42,45 +46,46 @@ function DonateBook() {
         </label>
         {/* ##!! Change to */}
 
-        <label htmlFor="Book Category" className="block">
-          <span className="my-2 block text-gray-600 text-[15px]">
+        <label htmlFor="bookCategory" className="block">
+          <span className="my-3 block text-gray-600 text-[15px]">
             Book Category
           </span>
           <input
             type="text"
             name="bookCategory"
-            id=""
+            id="bookCategory"
             //   onChange={handleChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter Book Category"
           />
         </label>
-        <label htmlFor="Donor Name" className="block">
-          <span className="my-2 block text-gray-600 text-[15px]">
+        <label htmlFor="donorName" className="block">
+          <span className="my-3 block text-gray-600 text-[15px]">
             Donor Name
           </span>
           <input
             type="text"
             name="donorName"
-            id=""
+            id="donorName"
             //   onChange={handleChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter Donor Name"
           />
         </label>
-        <textarea className="block">
-          <span className="my-2 block text-gray-600 text-[15px]">
-            Full Name
+        <label htmlFor="bookReview " className="block">
+          <span className="my-3 block text-gray-600 text-[15px]">
+            Book review
           </span>
-          <input
-            type="text"
-            name="fullName"
-            id=""
-            //   onChange={handleChange}
+          <textarea
+            id="bookReview"
+            name="bookReview"
+            required
+            rows={4}
+            cols={60}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter full name"
-          />
-        </textarea>
+          />{" "}
+        </label>
       </form>
     </>
   );
