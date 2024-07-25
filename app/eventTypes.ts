@@ -4,6 +4,7 @@ type ParagraphClickHandler = (
   event: React.MouseEvent<HTMLParagraphElement>
 ) => void;
 type SpanClickHandler = (event: React.MouseEvent<HTMLSpanElement>) => void;
+
 type DivClickHandler = (event: React.MouseEvent<HTMLDivElement>) => void;
 type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;

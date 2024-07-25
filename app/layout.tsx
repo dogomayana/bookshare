@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <NavBar />
-        <span className="mt-20 block">{children}</span>
+        {/* <NavBar /> */}
+        <span className="block">{children}</span>
       </body>
     </html>
   );
