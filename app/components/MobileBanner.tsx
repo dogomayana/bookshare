@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function MobileBanner() {
   return (
     <>
-      <div className="w-full p-3 border border-green-600">
+      <div className="w-full p-3">
         <p className="text-center text-sm text-gray-700">
           Let&apos;s make the best investment
         </p>
@@ -23,7 +23,7 @@ export default function MobileBanner() {
           priority={true}
         />
         <p className="text-center text-sm mt-4 text-gray-700">
-          Join Bookshare, the free digital library for everyone. Millions
+          Join Bookshare, the free digital library for everyone.
         </p>
         <p className="text-center text-sm mt-1 text-gray-700">
           Millions of audiobooks and ebooks await.
@@ -35,6 +35,8 @@ export default function MobileBanner() {
         <div className="flex w-full border border-blue-50 mt-8">
           <input
             type="text"
+            name="search"
+            id="search"
             placeholder="search"
             className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
           />

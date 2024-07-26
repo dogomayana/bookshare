@@ -6,7 +6,7 @@ function DonateBook() {
   return (
     <>
       <NavBar />
-      <form className="w-full p-2 md:w-6/12 mx-auto md:p-2">
+      <form className="w-full px-3 py-8 my-8 md:w-6/12 mx-auto bg-white">
         <label htmlFor="bookName" className="block">
           <span className="my-3 block text-gray-600 text-[15px]">
             Book Name
@@ -72,7 +72,7 @@ function DonateBook() {
             placeholder="Enter Donor Name"
           />
         </label>
-        <label htmlFor="bookReview " className="block">
+        <label htmlFor="bookReview" className="block">
           <span className="my-3 block text-gray-600 text-[15px]">
             Book review
           </span>
@@ -86,6 +86,35 @@ function DonateBook() {
             placeholder="Enter full name"
           />{" "}
         </label>
+        <label htmlFor="bookImage" className="block my-5">
+          <span className="my-2 text-sm font-semibold after:content-['*'] after:ml-0.5 after:text-red-700 block after:text-lg">
+            Book Cover
+          </span>
+          <input
+            required
+            type="file"
+            id="bookImage"
+            accept="image/*"
+            // onChange={handleImgChange}
+            className="w-full p-3 border border-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
+              file:text-sm file:font-semibold
+              file:bg-violet-50 file:text-violet-700
+              hover:file:bg-violet-100"
+          />
+        </label>
+
+        <button
+          className="p-3 bg-blue-100 text-blue-700 w-5/12 mx-auto my-8 block"
+          type="submit"
+        >
+          submit
+        </button>
+        <h1 className="text-lg text-center my-4">Security Measures</h1>
+        <p className="text-sm text-center">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
+          asperiores voluptatum quibusdam nisi assumenda recusandae numquam
+          nulla. Adipisci, id nihil.
+        </p>
       </form>
     </>
   );
