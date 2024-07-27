@@ -87,7 +87,7 @@ function DonateBook() {
           />{" "}
         </label>
         <label htmlFor="bookImage" className="block my-5">
-          <span className="my-2 text-sm font-semibold after:content-['*'] after:ml-0.5 after:text-red-700 block after:text-lg">
+          <span className="my-2 text-sm after:content-['*'] after:ml-0.5 after:text-red-700 block after:text-lg">
             Book Cover
           </span>
           <input
@@ -95,6 +95,22 @@ function DonateBook() {
             type="file"
             id="bookImage"
             accept="image/*"
+            // onChange={handleImgChange}
+            className="w-full p-3 border border-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
+              file:text-sm file:font-semibold
+              file:bg-violet-50 file:text-violet-700
+              hover:file:bg-violet-100"
+          />
+        </label>
+        <label htmlFor="bookPDF" className="block my-5">
+          <span className="my-2 text-sm after:content-['*'] after:ml-0.5 after:text-red-700 block after:text-lg">
+            Upload ebook File (PDF)
+          </span>
+          <input
+            required
+            type="file"
+            id="bookPDF"
+            accept=".pdf"
             // onChange={handleImgChange}
             className="w-full p-3 border border-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
               file:text-sm file:font-semibold

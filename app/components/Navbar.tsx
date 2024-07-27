@@ -81,7 +81,7 @@ export default function NavBar() {
           onClick={showDropdownContent}
           className="px-2 bg-white w-full md:hidden lg:hidden border border-gray-50"
         >
-          <span className="block flex-col justify-items-center space-y-3 w-full border-red-200 border">
+          <span className="block flex-col justify-items-center space-y-3 w-full">
             {/* <Link href={"/pages/dashboard"} className="text-center block ">
               Dashboard
             </Link> */}

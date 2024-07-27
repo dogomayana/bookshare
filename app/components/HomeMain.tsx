@@ -1,7 +1,21 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-
+import Swal from "sweetalert2";
+import React from "react";
+import { createPortal } from "react-dom";
+import { testimonials } from "@/app/testData";
+import { Comic_Neue, Lobster } from "next/font/google";
+const lobster = Comic_Neue({ weight: "400", subsets: ["latin"] });
 export default function HomeMain() {
+  const [swalShown, setSwalShown] = React.useState(false);
+
+  const showSwal = () => {
+    Swal.fire({
+      didOpen: () => setSwalShown(true),
+      didClose: () => setSwalShown(false),
+    });
+  };
   const booksCat = ["/book3.png", "/book4.png", "/book_1.png", "/book2.png"];
   const booksCatt = [
     "/book3.png",
@@ -39,7 +53,7 @@ export default function HomeMain() {
         <div className="w-full my-8 md:w-11/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
           {booksCatt.map((book, index) => (
             <div key={index} className="block">
-              <span className="block h-[200px]">
+              <span className="block h-[300px]">
                 <Image
                   src={book}
                   alt="bannerImage"
@@ -106,11 +120,150 @@ export default function HomeMain() {
           </div>
         </article>
 
-        <section className="bg-[#0095eb] p-3 my-16">
-          <h1 className="text-lg font-medium text-center text-gray-100">
+        {/* Book concept */}
+        <section className="bgColor p-3 my-16">
+          <h1 className="text-lg font-medium text-center text-white my-3">
             The 3 Concepts for a BookShare
           </h1>
+          <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
+            <div className="border-pink-700 border p-3">
+              <span className="block h-[100px] w-[100px] mx-auto">
+                <Image
+                  src={"/give.png"}
+                  alt="bannerImage"
+                  width={320}
+                  height={160}
+                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
+                  priority={true}
+                />
+              </span>
+              <h1 className="text-lg text-center my-4 text-white">
+                Easy Book Donation
+              </h1>
+
+              <p className="text-center text-sm text-white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus eos blanditiis quibusdam molestiae soluta corrupti
+                commodi nostrum vel recusandae at nemo, tempora, exercitationem
+                maiores dolorum? Quos, porro impedit natus non excepturi
+                delectus possimus minus eius incidunt magni blanditiis assumenda
+                tempore?{" "}
+              </p>
+            </div>
+            <div className="border-pink-700 border p-3">
+              <span className="block h-[100px] w-[100px] mx-auto">
+                <Image
+                  src={"/book.png"}
+                  alt="bannerImage"
+                  width={320}
+                  height={160}
+                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
+                  priority={true}
+                />
+              </span>
+              <h1 className="text-lg text-center my-4 text-white">
+                Vast Digital Collection
+              </h1>
+
+              <p className="text-center text-sm text-white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus eos blanditiis quibusdam molestiae soluta corrupti
+                commodi nostrum vel recusandae at nemo, tempora, exercitationem
+                maiores dolorum? Quos, porro impedit natus non excepturi
+                delectus possimus minus eius incidunt magni blanditiis assumenda
+                tempore?{" "}
+              </p>
+            </div>
+            <div className="border-pink-700 border p-3">
+              <span className="block h-[100px] w-[100px] mx-auto">
+                <Image
+                  src={"/light.png"}
+                  alt="bannerImage"
+                  width={320}
+                  height={160}
+                  style={{ width: "100%", height: "100%", objectFit: "fill" }}
+                  priority={true}
+                />
+              </span>
+              <h1 className="text-lg text-center my-4 text-white">
+                User-Friendly Interface
+              </h1>
+
+              <p className="text-center text-sm text-white">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Temporibus eos blanditiis quibusdam molestiae soluta corrupti
+                commodi nostrum vel recusandae at nemo, tempora, exercitationem
+                maiores dolorum? Quos, porro impedit natus non excepturi
+                delectus possimus minus eius incidunt magni blanditiis assumenda
+                tempore?{" "}
+              </p>
+            </div>
+          </div>
         </section>
+
+        {/* Testimonial */}
+        <section className="w-full md:w-11/12 md:mx-auto p-3 mt-12">
+          <h1 className="text-xl">Testimonial</h1>
+          <div className="space-y-3 mt-8 w-full md:w-10/12 md:mx-auto md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
+            {testimonials.map((tm, index) => (
+              <div className="p-3" key={index}>
+                <span className="rounded-md block py-8 px-3 bgColor shadow-lg">
+                  <p className={`${lobster.className} text-sm text-white`}>
+                    {tm.quote}
+                  </p>
+                </span>
+                <div className="w-full mt-8 flex">
+                  <span className="block h-[100px] w-[100px] rounded-full">
+                    <Image
+                      src={tm.imageSrc}
+                      alt={tm.testName}
+                      width={320}
+                      height={160}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "fill",
+                      }}
+                      priority={true}
+                    />
+                  </span>
+                  <span className="block my-auto ml-4">
+                    <p className={`${lobster.className} text-base`}>
+                      {tm.testName}
+                    </p>
+                    <p className={`${lobster.className} text-sm text-gray-50`}>
+                      {tm.occupation}
+                    </p>
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Subscription*/}
+        <div className="bg-black md:flex md:justify-between w-full p-5 md:w-10/12 mx-auto mt-10">
+          <div className="my-4 md:my-0 md:w-3/12">
+            <p className={`text-center md:text-start text-sm text-gray-100`}>
+              Subscribe to Our Newsletter
+            </p>
+            <p className={`text-center md:text-start text-sm text-gray-100`}>
+              Newest Books Updates
+            </p>
+          </div>
+          <div className="md:flex md:space-x-4">
+            <input
+              type="email"
+              name="userEmail"
+              id="userEmail"
+              placeholder="Email"
+              className=" p-3 w-full md:w-[500px] placeholder:text-gray-400 placeholder:italic"
+            />
+            <button className="p-3 block mt-6 md:mt-0 mx-auto md:mx-0 md:text-start bgColor text-white rounded-sm">
+              subscribe
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
