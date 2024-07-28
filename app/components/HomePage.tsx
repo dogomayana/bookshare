@@ -5,6 +5,9 @@ import NavBar from "./Navbar";
 import Image from "next/image";
 import Link from "next/link";
 export default function HomePage() {
+  const quickLinks = ["Home", "About Us", "Team", "Author", "Help"];
+  const legals = ["My Acocunt", "Support", "Privacy Policy", "FAQ", "Terms"];
+  const pol = "lop";
   return (
     <>
       <NavBar />
@@ -137,6 +140,60 @@ export default function HomePage() {
         {/*  */}
       </main>
       <HomeMain />
+
+      {/* footer */}
+      <footer className="w-full p-4 bg-white border border-red-600">
+        <div className="w-11/12 mx-auto md:grid md:grid-cols-3">
+          <div className="p-3 border-red-600 border">
+            <span className="p-3 text-center block mx-auto border-red-600 border">
+              <Image
+                src="/jlogo.png"
+                alt="logo"
+                width={150}
+                height={50}
+                // style={{ width: "100%", height: "100%", objectFit: "fill" }}
+                priority={true}
+              />
+            </span>
+            <p className="text-sm text-center mt-2">
+              Empowering a community of readers and learners one book at a time
+              through seamless sharing and access.
+            </p>
+          </div>
+          <div className="p-3 border-red-600 border flex justify-between">
+            <span className="block mt-6">
+              <h1 className="font-medium text-lg">Quick Links</h1>
+              <ol className="block mt-4 text-sm space-y-2">
+                {quickLinks.map((link, index) => (
+                  <li key={index}>{link}</li>
+                ))}
+              </ol>
+            </span>
+            <span className="block mt-6">
+              <h1 className="font-medium text-lg">Legals</h1>
+              <ol className="block mt-4 space-y-2">
+                {legals.map((link, index) => (
+                  <li key={index} className="text-sm ">
+                    {link}
+                  </li>
+                ))}
+              </ol>
+            </span>
+          </div>
+          <div className="p-3 border-red-600 border">
+            <span className="block mt-6">
+              <h1 className="font-medium text-lg text-center md:text-start">
+                Socials
+                <Link href={`/pages/${pol}`}>lop</Link>
+              </h1>
+            </span>
+          </div>
+        </div>
+
+        <h1 className="text-center text-gray-600 text-sm mt-6">
+          ©2024 BookShare All right reserved
+        </h1>
+      </footer>
     </>
   );
 }

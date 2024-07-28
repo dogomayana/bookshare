@@ -20,7 +20,7 @@ export default function NavBar() {
             alt="logo"
             width={150}
             height={50}
-            className="borderr border-green-700"
+            // className="borderr border-green-700"
           />
         </Link>
         <span className="hidden md:inline-flex md:justify-evenly  w-full md:space-x-10 ">

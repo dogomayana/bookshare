@@ -26,7 +26,7 @@ export default function HomeMain() {
   ];
   return (
     <>
-      <div className="bg-white p-3 w-full my-8">
+      <div className="bg-white p-3 w-full my-14">
         <h1 className="text-blue-500 my-8 text-center text-lg font-medium">
           Categories
         </h1>
@@ -81,8 +81,8 @@ export default function HomeMain() {
 
         <article className="mt-16">
           <h1 className="text-center my-8 text-lg">About BookShare</h1>
-          <div className="md:flex md:w-11/12 w-full mx-auto justify-between p-3 border-pink-700 border">
-            <div className="block w-full md:w-5/12 border-pink-700 border">
+          <div className="md:flex md:w-11/12 w-full mx-auto justify-between p-3">
+            <div className="block w-full md:w-5/12">
               <Image
                 src={"/left.png"}
                 alt="bannerImage"
@@ -93,7 +93,7 @@ export default function HomeMain() {
               />
             </div>
 
-            <div className="border-pink-700 border w-full md:w-5/12">
+            <div className="w-full md:w-5/12">
               <p className="text-sm p-3">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint,
                 in. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut,
@@ -125,8 +125,8 @@ export default function HomeMain() {
           <h1 className="text-lg font-medium text-center text-white my-3">
             The 3 Concepts for a BookShare
           </h1>
-          <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
-            <div className="border-pink-700 border p-3">
+          <div className="space-y-11 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
+            <div className="p-3">
               <span className="block h-[100px] w-[100px] mx-auto">
                 <Image
                   src={"/give.png"}
@@ -150,7 +150,7 @@ export default function HomeMain() {
                 tempore?{" "}
               </p>
             </div>
-            <div className="border-pink-700 border p-3">
+            <div className="p-3 ">
               <span className="block h-[100px] w-[100px] mx-auto">
                 <Image
                   src={"/book.png"}
@@ -174,7 +174,7 @@ export default function HomeMain() {
                 tempore?{" "}
               </p>
             </div>
-            <div className="border-pink-700 border p-3">
+            <div className="p-3">
               <span className="block h-[100px] w-[100px] mx-auto">
                 <Image
                   src={"/light.png"}
@@ -242,7 +242,7 @@ export default function HomeMain() {
         </section>
 
         {/* Subscription*/}
-        <div className="bg-black md:flex md:justify-between w-full p-5 md:w-10/12 mx-auto mt-10">
+        <div className="bg-black md:flex md:justify-between w-full p-5 md:w-10/12 mx-auto my-10">
           <div className="my-4 md:my-0 md:w-3/12">
             <p className={`text-center md:text-start text-sm text-gray-100`}>
               Subscribe to Our Newsletter
