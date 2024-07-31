@@ -60,6 +60,7 @@ export default function NavBar() {
             </Link>
           </div>
         </span>
+
         <button
           aria-label="nav_button"
           id="buttonTitle"
@@ -76,16 +77,18 @@ export default function NavBar() {
           )}
         </button>
       </nav>
+
+      {/* Mobile */}
       {reveal && (
         <div
           onClick={showDropdownContent}
           className="px-2 bg-white w-full md:hidden lg:hidden border border-gray-50"
         >
-          <span className="block flex-col justify-items-center space-y-3 w-full">
+          <span className="block flex-col my-4 justify-items-center space-y-3 w-full">
             {/* <Link href={"/pages/dashboard"} className="text-center block ">
               Dashboard
             </Link> */}
-            <Link href={"/pages/donateBook"} className="text-center block ">
+            <Link href={"/pages/donateBook"} className="text-center block py-2">
               Donate Book
             </Link>
             {/* <Link href={"/pages/dashboard"} className="text-center block ">

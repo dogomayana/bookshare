@@ -1,8 +1,79 @@
 "use client";
 
 import NavBar from "@/app/components/Navbar";
+import { supabase } from "@/app/config/supabase";
+import React from "react";
 
 function DonateBook() {
+  const [bookDetails, setBookDetails] = React.useState<any>({
+    bookName: "",
+    isbn: "",
+    authorName: "",
+    donorName: "",
+  });
+  console.log(bookDetails.donorName);
+
+  const [selectedOption, setSelectedOption] = React.useState<string>("");
+  const [bookImage, setBookImage] = React.useState<any>("");
+  const [bookPDF, setBookPDF] = React.useState<string>("");
+
+  const [bookBrief, setBookBrief] = React.useState<string>("");
+
+  const bookChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setBookDetails((prev: any) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setSelectedOption(value);
+  };
+  const onSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    try {
+      // setIsLoading(true);
+      const { data, error: err } = await supabase.storage
+        .from("my_blog")
+        .upload(`featured_imgs/${bookImage.name}`, bookImage, {
+          upsert: true,
+        });
+      if (err) {
+        alert(err.message);
+        return;
+      }
+
+      const { data: img } = supabase.storage
+        .from("my_blog")
+        .getPublicUrl(`featured_imgs/${bookImage.name}`);
+
+      // return data.publicUrl;
+
+      // newTopic.content = richText;
+
+      const { error } = await supabase.from("my_blog").insert({
+        // category: category,
+        // title: newTopic.topic,
+        // slug: newTopic.slug.split(" ").join("_"),
+        // excerpt: newTopic.excerpt,
+        // author_name: newTopic.creatorName,
+        // featured_image: img.publicUrl == "" ? fImg : img.publicUrl,
+        // content: newTopic.content,
+        // image_alt: newTopic.image_alt,
+        // tag: newTopic.tag,
+      });
+      if (error) {
+        alert("Error fetching product: " + error.message);
+        return;
+      } else {
+        alert("Successful");
+      }
+    } catch (error) {}
+    // setIsLoading(false);
+  };
   return (
     <>
       <NavBar />
@@ -15,18 +86,32 @@ function DonateBook() {
             type="text"
             name="bookName"
             id="bookName"
-            //   onChange={handleChange}
+            value={bookDetails.bookName}
+            onChange={bookChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter book name"
           />
         </label>
+        <select
+          className="block my-4 w-full p-2 text-gray-600 text-[15px] border border-gray-400 rounded"
+          onChange={selectChange}
+          value={selectedOption}
+        >
+          <option value={""} className="text-gray-600 text-[15px]">
+            Book Categories
+          </option>
+          <option value="nce">Drama</option>
+          <option value="BEd">Software Development</option>
+          <option value="BEd">Kiddes</option>
+        </select>
         <label htmlFor="isbn" className="block">
           <span className="my-3 block text-gray-600 text-[15px]">ISBN</span>
           <input
             type="text"
             name="isbn"
             id="isbn"
-            //   onChange={handleChange}
+            value={bookDetails.isbn}
+            onChange={bookChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter ISBN"
           />
@@ -39,26 +124,13 @@ function DonateBook() {
             type="text"
             name="authorName"
             id="authorName"
-            //   onChange={handleChange}
+            value={bookDetails.authorName}
+            onChange={bookChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter Author Name"
           />
         </label>
-        {/* ##!! Change to */}
 
-        <label htmlFor="bookCategory" className="block">
-          <span className="my-3 block text-gray-600 text-[15px]">
-            Book Category
-          </span>
-          <input
-            type="text"
-            name="bookCategory"
-            id="bookCategory"
-            //   onChange={handleChange}
-            className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
-            placeholder="Enter Book Category"
-          />
-        </label>
         <label htmlFor="donorName" className="block">
           <span className="my-3 block text-gray-600 text-[15px]">
             Donor Name
@@ -67,7 +139,8 @@ function DonateBook() {
             type="text"
             name="donorName"
             id="donorName"
-            //   onChange={handleChange}
+            value={bookDetails.donorName}
+            onChange={bookChange}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter Donor Name"
           />
@@ -82,6 +155,8 @@ function DonateBook() {
             required
             rows={4}
             cols={60}
+            value={bookBrief}
+            onChange={(e) => setBookBrief(e.target.value)}
             className="p-3 w-full block border border-gray-400 rounded-md placeholder:text-sm focus"
             placeholder="Enter full name"
           />{" "}
@@ -126,7 +201,7 @@ function DonateBook() {
           submit
         </button>
         <h1 className="text-lg text-center my-4">Security Measures</h1>
-        <p className="text-sm text-center">
+        <p className="text-sm text-center md:px-7">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat,
           asperiores voluptatum quibusdam nisi assumenda recusandae numquam
           nulla. Adipisci, id nihil.

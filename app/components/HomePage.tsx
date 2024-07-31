@@ -1,13 +1,29 @@
-import DesktopBanner from "./DesktopBanner";
+"use client";
+import { Icon } from "@iconify-icon/react";
+import { createPortal } from "react-dom";
+import Swal from "sweetalert2";
+import FoundItem from "@/app/components/FoundItem";
 import HomeMain from "./HomeMain";
-import MobileBanner from "./MobileBanner";
 import NavBar from "./Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+
 export default function HomePage() {
   const quickLinks = ["Home", "About Us", "Team", "Author", "Help"];
   const legals = ["My Acocunt", "Support", "Privacy Policy", "FAQ", "Terms"];
-  const pol = "lop";
+  const [search, setSearch] = React.useState<string>("");
+  const [searchM, setSearchM] = React.useState<string>("");
+  const [showModal, setShowModal] = React.useState(false);
+  const [swalShown, setSwalShown] = React.useState(false);
+
+  const showSwal = () => {
+    Swal.fire({
+      didOpen: () => setSwalShown(true),
+      didClose: () => setSwalShown(false),
+      showConfirmButton: false,
+    });
+  };
   return (
     <>
       <NavBar />
@@ -15,6 +31,19 @@ export default function HomePage() {
         <div className="w-full p-3">
           <p className="text-center text-sm text-gray-700">
             Let&apos;s make the best investment
+            <Icon icon="mdi-light:alert" className="w-50" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="7em"
+              height="1em"
+              viewBox="0 0 24 24"
+              className="w-[40px]"
+            >
+              <path
+                fill="currentColor"
+                d="M13.5 9V4H20v5zM4 12V4h6.5v8zm9.5 8v-8H20v8zM4 20v-5h6.5v5zm1-9h4.5V5H5zm9.5 8H19v-6h-4.5zm0-11H19V5h-4.5zM5 19h4.5v-3H5zm4.5-3"
+              ></path>
+            </svg>
           </p>
           <h1 className="text-2xl my-8 text-center">
             Unlock a World of Stories.{" "}
@@ -48,6 +77,8 @@ export default function HomePage() {
             <input
               type="text"
               name="searchM"
+              value={searchM}
+              onChange={(e) => setSearchM(e.target.value)}
               id="searchM"
               placeholder="search"
               className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
@@ -56,6 +87,18 @@ export default function HomePage() {
               &#128269;
             </button>
           </div>
+          <button onClick={showSwal}>Show SweetAlert2 modal</button>
+          {/* Use createPortal to use the same state between your app and SweetAlert2 */}
+          {swalShown &&
+            createPortal(
+              <div className="w-full bg-purple-900">
+                <Link href="/about" onClick={() => Swal.close()}>
+                  Go to About
+                </Link>
+              </div>,
+
+              Swal.getHtmlContainer()!
+            )}
 
           <div className="w-full flex justify-between mt-7 mb-4">
             <Link
@@ -101,12 +144,31 @@ export default function HomePage() {
                 type="text"
                 name="search"
                 id="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="search"
                 className="p-3 w-11/12 block shadow-md rounded-md placeholder:italic"
               />
               <button className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100">
                 &#128269;
               </button>
+              <button onClick={() => setShowModal(true)}>
+                Show modal using a portal
+              </button>
+              {showModal &&
+                createPortal(
+                  <FoundItem onClose={() => setShowModal(false)} />,
+                  document.body
+                )}
+
+              {/* <button onClick={showSwal}>Show SweetAlert2 modal</button> */}
+              {/* Use createPortal to use the same state between your app and SweetAlert2 */}
+              {/* {swalShown &&
+                createPortal(
+                  <FoundItem />,
+
+                  Swal.getTitle()!
+                )} */}
             </div>
 
             <div className="w-full flex justify-between mt-7 mb-4">
@@ -142,10 +204,10 @@ export default function HomePage() {
       <HomeMain />
 
       {/* footer */}
-      <footer className="w-full p-4 bg-white border border-red-600">
+      <footer className="w-full p-4 bg-white">
         <div className="w-11/12 mx-auto md:grid md:grid-cols-3">
-          <div className="p-3 border-red-600 border">
-            <span className="p-3 text-center block mx-auto border-red-600 border">
+          <div className="p-3">
+            <span className="p-3 text-center block mx-auto">
               <Image
                 src="/jlogo.png"
                 alt="logo"
@@ -160,7 +222,7 @@ export default function HomePage() {
               through seamless sharing and access.
             </p>
           </div>
-          <div className="p-3 border-red-600 border flex justify-between">
+          <div className="p-3 flex justify-between">
             <span className="block mt-6">
               <h1 className="font-medium text-lg">Quick Links</h1>
               <ol className="block mt-4 text-sm space-y-2">
@@ -180,11 +242,10 @@ export default function HomePage() {
               </ol>
             </span>
           </div>
-          <div className="p-3 border-red-600 border">
+          <div className="p-3">
             <span className="block mt-6">
               <h1 className="font-medium text-lg text-center md:text-start">
                 Socials
-                <Link href={`/pages/${pol}`}>lop</Link>
               </h1>
             </span>
           </div>

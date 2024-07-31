@@ -1,9 +1,9 @@
-import Image from "next/image";
-import SignUp from "./pages/signUp/page";
-import NavBar from "./components/Navbar";
 import HomePage from "./components/HomePage";
+import { getQuestions } from "@/app/service/fetcher";
+export default async function Home() {
+  let lop = await getQuestions();
+  console.log(lop);
 
-export default function Home() {
   return (
     <>
       <HomePage />
