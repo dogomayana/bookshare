@@ -11,13 +11,13 @@ function DonateBook() {
     authorName: "",
     donorName: "",
   });
-  console.log(bookDetails.donorName);
 
   const [selectedOption, setSelectedOption] = React.useState<string>("");
-  const [bookImage, setBookImage] = React.useState<any>("");
-  const [bookPDF, setBookPDF] = React.useState<string>("");
-
+  // const [bookImage, setBookImage] = React.useState<any>("");
+  // const [bookPDF, setBookPDF] = React.useState<string>("");
   const [bookBrief, setBookBrief] = React.useState<string>("");
+  const [imgChecker, setImgChecker] = React.useState<any>("");
+  const [fileChecker, setFileChecker] = React.useState<any>("");
 
   const bookChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -31,39 +31,52 @@ function DonateBook() {
     const value = event.target.value;
     setSelectedOption(value);
   };
-  const onSubmit = async (e: React.SyntheticEvent) => {
+  const bookImgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setImgChecker(file);
+  };
+
+  const bookPDFChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setFileChecker(file);
+  };
+  const bookSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     try {
       // setIsLoading(true);
-      const { data, error: err } = await supabase.storage
-        .from("my_blog")
-        .upload(`featured_imgs/${bookImage.name}`, bookImage, {
+      const { data: imgC, error: errC } = await supabase.storage
+        .from("book_share")
+        .upload(`book_image/${imgChecker.name}`, imgChecker, {
+          cacheControl: "3600",
           upsert: true,
         });
-      if (err) {
-        alert(err.message);
-        return;
-      }
 
-      const { data: img } = supabase.storage
-        .from("my_blog")
-        .getPublicUrl(`featured_imgs/${bookImage.name}`);
+      const { data, error: err } = await supabase.storage
+        .from("book_share")
+        .upload(`book_file/${fileChecker.name}`, fileChecker, {
+          cacheControl: "3600",
+          upsert: true,
+        });
 
-      // return data.publicUrl;
+      const { data: imgI } = supabase.storage
+        .from("book_share")
+        .getPublicUrl(`book_image/${imgChecker.name}`);
 
-      // newTopic.content = richText;
+      const { data: imgF } = supabase.storage
+        .from("book_share")
+        .getPublicUrl(`book_file/${fileChecker.name}`);
 
-      const { error } = await supabase.from("my_blog").insert({
-        // category: category,
-        // title: newTopic.topic,
-        // slug: newTopic.slug.split(" ").join("_"),
-        // excerpt: newTopic.excerpt,
-        // author_name: newTopic.creatorName,
-        // featured_image: img.publicUrl == "" ? fImg : img.publicUrl,
-        // content: newTopic.content,
-        // image_alt: newTopic.image_alt,
-        // tag: newTopic.tag,
+      const { error } = await supabase.from("book_share").insert({
+        bookName: bookDetails.bookName,
+        authorName: bookDetails.authorName,
+        isbn: bookDetails.isbn,
+        donorName: bookDetails.donorName,
+        categories: selectedOption,
+        bookImage: imgI.publicUrl,
+        bookBrief: bookBrief,
+        bookPDF: imgF.publicUrl,
+        slug: bookDetails.bookName.split(" ").join("_"),
       });
       if (error) {
         alert("Error fetching product: " + error.message);
@@ -77,7 +90,10 @@ function DonateBook() {
   return (
     <>
       <NavBar />
-      <form className="w-full px-3 py-8 my-8 md:w-6/12 mx-auto bg-white">
+      <form
+        onSubmit={bookSubmit}
+        className="w-full px-3 py-8 my-8 md:w-6/12 mx-auto bg-white"
+      >
         <label htmlFor="bookName" className="block">
           <span className="my-3 block text-gray-600 text-[15px]">
             Book Name
@@ -96,6 +112,7 @@ function DonateBook() {
           className="block my-4 w-full p-2 text-gray-600 text-[15px] border border-gray-400 rounded"
           onChange={selectChange}
           value={selectedOption}
+          required
         >
           <option value={""} className="text-gray-600 text-[15px]">
             Book Categories
@@ -170,13 +187,19 @@ function DonateBook() {
             type="file"
             id="bookImage"
             accept="image/*"
-            // onChange={handleImgChange}
+            onChange={bookImgChange}
             className="w-full p-3 border border-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
               file:text-sm file:font-semibold
               file:bg-violet-50 file:text-violet-700
               hover:file:bg-violet-100"
           />
         </label>
+        {imgChecker != undefined && imgChecker.size / 1e3 > 4 && (
+          <p className="text-sm text-red-700">
+            Cover Image should be below 400kb !
+          </p>
+        )}
+
         <label htmlFor="bookPDF" className="block my-5">
           <span className="my-2 text-sm after:content-['*'] after:ml-0.5 after:text-red-700 block after:text-lg">
             Upload ebook File (PDF)
@@ -186,19 +209,22 @@ function DonateBook() {
             type="file"
             id="bookPDF"
             accept=".pdf"
-            // onChange={handleImgChange}
+            onChange={bookPDFChange}
             className="w-full p-3 border border-blue-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0
               file:text-sm file:font-semibold
               file:bg-violet-50 file:text-violet-700
               hover:file:bg-violet-100"
           />
         </label>
-
+        {fileChecker != undefined && fileChecker.size / 1e6 > 5 && (
+          <p className="text-sm text-red-700">File should be below 5MB !</p>
+        )}
         <button
-          className="p-3 bg-blue-100 text-blue-700 w-5/12 mx-auto my-8 block"
+          className="p-3 bg-blue-200 text-blue-700 w-5/12 mx-auto my-8 block"
           type="submit"
+          disabled={fileChecker.size / 1e6 > 5 || imgChecker.size / 1e3 > 4}
         >
-          submit
+          Submit
         </button>
         <h1 className="text-lg text-center my-4">Security Measures</h1>
         <p className="text-sm text-center md:px-7">
