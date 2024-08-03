@@ -75,9 +75,9 @@ export default function HomePage() {
               &#128269;
             </button>
           </div>
-          <button onClick={showSwal}>Show SweetAlert2 modal</button>
+          {/* <button onClick={showSwal}>Show SweetAlert2 modal</button>
           {/* Use createPortal to use the same state between your app and SweetAlert2 */}
-          {swalShown &&
+          {/* {swalShown &&
             createPortal(
               <div className="w-full bg-purple-900">
                 <Link href="/about" onClick={() => Swal.close()}>
@@ -86,7 +86,7 @@ export default function HomePage() {
               </div>,
 
               Swal.getHtmlContainer()!
-            )}
+            )}   */}
 
           <div className="w-full flex justify-between mt-7 mb-4">
             <Link
@@ -140,14 +140,14 @@ export default function HomePage() {
               <button className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100">
                 &#128269;
               </button>
-              <button onClick={() => setShowModal(true)}>
+              {/* <button onClick={() => setShowModal(true)}>
                 Show modal using a portal
               </button>
               {showModal &&
                 createPortal(
                   <FoundItem onClose={() => setShowModal(false)} />,
                   document.body
-                )}
+                )} */}
 
               {/* <button onClick={showSwal}>Show SweetAlert2 modal</button> */}
               {/* Use createPortal to use the same state between your app and SweetAlert2 */}
@@ -201,7 +201,6 @@ export default function HomePage() {
                 alt="logo"
                 width={150}
                 height={50}
-                // style={{ width: "100%", height: "100%", objectFit: "fill" }}
                 priority={true}
               />
             </span>

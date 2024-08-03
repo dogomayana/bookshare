@@ -31,18 +31,19 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className="md:w-7/12 p-4">
           <h1 className="text-2xl font-semibold">Psychology of Money</h1>
           <div className="flex space-x-2 my-6">
-            <Image
+            {/* <Image
               src={"/Stephan.png"}
               alt="bannerImage"
               width={50}
               height={50}
-              //   style={{ width: "100%", height: "100%", objectFit: "fill" }}
               priority={true}
-            />
-            <p className="text-gray-500 my-auto">Morgan Housel</p>
+            /> */}
+            <p className="text-gray-500 my-auto">
+              <span>Author: </span>Morgan Housel
+            </p>
           </div>
           <div className="md:w-10/12">
-            <p className="">
+            <p className="text-sm">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Repellendus ad ex voluptatum incidunt, aspernatur blanditiis hic,
               debitis cupiditate totam cumque dolorem nihil. Ullam voluptas unde
@@ -84,9 +85,9 @@ export default function Page({ params }: { params: { slug: string } }) {
           </button>
         </div>
       </div>
-      <article className="w-full p-3 md:w-11/12 mx-auto mt-20 bg-white">
-        <h1 className="text-base font-semibold">Related Books</h1>
-        <div className="w-full my-8 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-4 gap-5 place-content-center">
+      <article className="w-full p-3 mx-auto mt-20 bg-white">
+        <h1 className="text-base font-semibold ml-4">Related Books</h1>
+        <div className="w-full my-8 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
           {booksCatt.map((book, index) => (
             <div key={index} className="block">
               <Link href={`/pages/${pol}`}>
