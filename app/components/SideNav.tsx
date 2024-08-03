@@ -1,11 +1,13 @@
 "use client";
+import { Icon } from "@iconify-icon/react";
+
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 export default function SideNav() {
   const pathname = usePathname();
   return (
-    <div className="p-4 fixed h-screen left-0 flex-none md:w-64">
+    <div className="p-4 fixed bg-white h-screen left-0 flex-none md:w-64">
       <Link href={"/"} className="text-base my-auto hover:text-[#0095eb]">
         <Image
           src="/jlogo.png"
@@ -17,20 +19,38 @@ export default function SideNav() {
       </Link>
       <div className="flex flex-col justify-between">
         <div className="mt-11">
-          <h1 className="text-lg">Navigation</h1>
+          <h1 className="text-lg mb-5">Navigation</h1>
           <Link
             className={`link ${
               pathname === "/dashboard"
-                ? "block my-4 text-sm p-2 bg-slate-500"
-                : ""
+                ? "block my-2 text-sm p-2 bg-blue-100"
+                : "block text-sm"
             }`}
             href={"/dashboard"}
           >
-            Dashboard
+            <span className="mr-2">
+              <Icon icon="mdi-light:view-dashboard" width={20} height={20} />
+            </span>
+            <span className="my-auto inline-block">Dashboard</span>
           </Link>
-          <Link href={"/pages/allBooks"} className="block my-4 text-sm">
-            All Books
+          <Link
+            className={`link ${
+              pathname === "/dashboard/allBooks"
+                ? "block my-2 text-sm p-2 bg-blue-100"
+                : "block"
+            }`}
+            href={"/dashboard/allBooks"}
+          >
+            <span className="mr-2">
+              <Icon
+                icon="material-symbols-light:category-outline"
+                width={20}
+                height={20}
+              />
+            </span>
+            <span className="my-auto inline-block">All Books</span>
           </Link>
+
           <Link href={"/pages/donateBook"} className="block my-4 text-sm">
             Donate Book
           </Link>

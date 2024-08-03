@@ -10,3 +10,6 @@ export async function getQuestions() {
   //   console.log(data);
   return data;
 }
+const { data, error } = await supabase.storage
+  .from("book_share")
+  .download("folder/avatar1.png");

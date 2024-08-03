@@ -13,11 +13,10 @@ function DonateBook() {
   });
 
   const [selectedOption, setSelectedOption] = React.useState<string>("");
-  // const [bookImage, setBookImage] = React.useState<any>("");
-  // const [bookPDF, setBookPDF] = React.useState<string>("");
   const [bookBrief, setBookBrief] = React.useState<string>("");
   const [imgChecker, setImgChecker] = React.useState<any>("");
   const [fileChecker, setFileChecker] = React.useState<any>("");
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const bookChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -44,7 +43,7 @@ function DonateBook() {
     e.preventDefault();
 
     try {
-      // setIsLoading(true);
+      setIsLoading(true);
       const { data: imgC, error: errC } = await supabase.storage
         .from("book_share")
         .upload(`book_image/${imgChecker.name}`, imgChecker, {
@@ -52,7 +51,7 @@ function DonateBook() {
           upsert: true,
         });
 
-      const { data, error: err } = await supabase.storage
+      const { data: bookPath, error: err } = await supabase.storage
         .from("book_share")
         .upload(`book_file/${fileChecker.name}`, fileChecker, {
           cacheControl: "3600",
@@ -63,10 +62,6 @@ function DonateBook() {
         .from("book_share")
         .getPublicUrl(`book_image/${imgChecker.name}`);
 
-      const { data: imgF } = supabase.storage
-        .from("book_share")
-        .getPublicUrl(`book_file/${fileChecker.name}`);
-
       const { error } = await supabase.from("book_share").insert({
         bookName: bookDetails.bookName,
         authorName: bookDetails.authorName,
@@ -75,7 +70,7 @@ function DonateBook() {
         categories: selectedOption,
         bookImage: imgI.publicUrl,
         bookBrief: bookBrief,
-        bookPDF: imgF.publicUrl,
+        bookPDF: bookPath?.path,
         slug: bookDetails.bookName.split(" ").join("_"),
       });
       if (error) {
@@ -85,7 +80,7 @@ function DonateBook() {
         alert("Successful");
       }
     } catch (error) {}
-    // setIsLoading(false);
+    setIsLoading(false);
   };
   return (
     <>
@@ -194,7 +189,7 @@ function DonateBook() {
               hover:file:bg-violet-100"
           />
         </label>
-        {imgChecker != undefined && imgChecker.size / 1e3 > 4 && (
+        {imgChecker != undefined && imgChecker.size / 1e3 > 400 && (
           <p className="text-sm text-red-700">
             Cover Image should be below 400kb !
           </p>
@@ -224,7 +219,7 @@ function DonateBook() {
           type="submit"
           disabled={fileChecker.size / 1e6 > 5 || imgChecker.size / 1e3 > 4}
         >
-          Submit
+          {isLoading ? "Submiting..." : "Submit"}
         </button>
         <h1 className="text-lg text-center my-4">Security Measures</h1>
         <p className="text-sm text-center md:px-7">
