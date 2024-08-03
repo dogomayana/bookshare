@@ -31,7 +31,6 @@ export default function HomePage() {
         <div className="w-full p-3">
           <p className="text-center text-sm text-gray-700">
             Let&apos;s make the best investment
-            <Icon icon="mdi-light:alert" width={60} height={60} />
           </p>
           <h1 className="text-2xl my-8 text-center">
             Unlock a World of Stories.{" "}

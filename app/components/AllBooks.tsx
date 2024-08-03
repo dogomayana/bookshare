@@ -16,7 +16,7 @@ export default function AllBooks({ allBooks }: { allBooks: any }) {
         {booksCatt.map((book, index) => (
           <div key={index} className="block">
             <Link href={`/pages/${pol}`}>
-              <span className="block h-[300px]">
+              <span className="block h-[171px]">
                 <Image
                   src={book}
                   alt="bannerImage"

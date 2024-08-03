@@ -67,7 +67,7 @@ export default function SideNav() {
           </Link>
         </div>
 
-        <div className="w-full absolute bottom-0">
+        <div className="w-full absolute bottom-1">
           <Link href={"#"} className="block my-4 text-sm">
             Help/Support
           </Link>
