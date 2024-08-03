@@ -27,6 +27,12 @@ export default function NavBar() {
           <div className="flex space-x-5 my-auto">
             <Link
               className="text-base text-gray-900 hover:text-[#0095eb]"
+              href={"/dashboard"}
+            >
+              Dashboard
+            </Link>
+            <Link
+              className="text-base text-gray-900 hover:text-[#0095eb]"
               href={"/pages/donateBook"}
             >
               Donate Book
@@ -85,9 +91,9 @@ export default function NavBar() {
           className="px-2 bg-white w-full md:hidden lg:hidden border border-gray-50"
         >
           <span className="block flex-col my-4 justify-items-center space-y-3 w-full">
-            {/* <Link href={"/pages/dashboard"} className="text-center block ">
+            <Link href={"/dashboard"} className="text-center block ">
               Dashboard
-            </Link> */}
+            </Link>
             <Link href={"/pages/donateBook"} className="text-center block py-2">
               Donate Book
             </Link>
