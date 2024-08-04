@@ -32,7 +32,7 @@ export default function HomePage() {
           <p className="text-center text-sm text-gray-700">
             Let&apos;s make the best investment
           </p>
-          <h1 className="text-2xl my-8 text-center">
+          <h1 className="text-2xl font-semibold my-8 text-center">
             Unlock a World of Stories.{" "}
             <Link
               href={"/pages/donateBook"}

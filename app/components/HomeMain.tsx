@@ -34,13 +34,13 @@ export default function HomeMain() {
         </h1>
         <div className="w-full my-8 md:w-10/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-4 place-content-center">
           {booksCat.map((book, index) => (
-            <span key={index} className="block p-3 h-[171px]">
+            <span key={index} className="block p-3 border border-red-500">
               <Image
                 src={book}
                 alt="bannerImage"
-                width={320}
-                height={160}
-                style={{ width: "100%", height: "100%", objectFit: "fill" }}
+                width={170}
+                height={171}
+                // style={{ width: "100%", height: "100%", objectFit: "fill" }}
                 priority={true}
               />
               <p className="text-center">fiction</p>
@@ -56,13 +56,13 @@ export default function HomeMain() {
           {booksCatt.map((book, index) => (
             <div key={index} className="block">
               <Link href={`/pages/${pol}`}>
-                <span className="block h-[171px]">
+                <span key={index} className="block p-3 border border-red-500">
                   <Image
                     src={book}
                     alt="bannerImage"
-                    width={320}
-                    height={160}
-                    style={{ width: "100%", height: "100%", objectFit: "fill" }}
+                    width={170}
+                    height={171}
+                    // style={{ width: "100%", height: "100%", objectFit: "fill" }}
                     priority={true}
                   />
                 </span>
