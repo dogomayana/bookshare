@@ -48,48 +48,58 @@ export default function HomeMain() {
           ))}
         </div>
 
-        <h1 className="text-blue-500 my-16 text-center text-lg font-medium">
-          Featured
-        </h1>
+        <article className="my-8">
+          <h1 className="text-blue-500 my-16 text-center text-lg font-medium">
+            Featured
+          </h1>
 
-        <div className="w-full my-8 md:w-11/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
-          {booksCatt.map((book, index) => (
-            <div key={index} className="block">
-              <Link href={`/pages/${pol}`}>
-                <span key={index} className="block p-3 border border-red-500">
-                  <Image
-                    src={book}
-                    alt="bannerImage"
-                    width={170}
-                    height={171}
-                    // style={{ width: "100%", height: "100%", objectFit: "fill" }}
-                    priority={true}
-                  />
-                </span>
-              </Link>
+          <div className="w-full md:w-11/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
+            {booksCatt.map((book, index) => (
+              <div key={index} className="block">
+                <Link href={`/pages/${pol}`} className="cursor-pointer ">
+                  <span key={index} className="block p-3 border border-red-500">
+                    <Image
+                      src={book}
+                      alt="bannerImage"
+                      width={170}
+                      height={171}
+                      // style={{ width: "100%", height: "100%", objectFit: "fill" }}
+                      priority={true}
+                    />
+                  </span>
+                </Link>
 
-              <h1 className="pl-3 text-ellipsis text-[15px]">
-                What i learned from trees
-              </h1>
-              <h3 className="pl-3  mb-4 text-gray-500 text-sm">Author Name</h3>
+                <h1 className="pl-3 text-ellipsis text-[15px]">
+                  What i learned from trees
+                </h1>
+                <h3 className="pl-3  mb-4 text-gray-500 text-sm">
+                  Author Name
+                </h3>
 
-              <Link
-                href={`/pages/${pol}`}
-                className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
-              >
-                Read Now
-              </Link>
-              {/* </span> */}
-            </div>
-          ))}
-        </div>
+                <Link
+                  href={`/pages/bookDetails/${pol}`}
+                  className="px-3 block text-center py-2 my-3 rounded-md cursor-pointer text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
+                >
+                  Download
+                </Link>
+                {/* </span> */}
+              </div>
+            ))}
+          </div>
+          <Link
+            href={"/pages/allBooks"}
+            className="pr-12 mt-2 text-blue-600 cursor-pointer float-right block"
+          >
+            View all
+          </Link>
+        </article>
 
         <article className="mt-16">
           <h1 className="text-center my-8 text-lg">About BookShare</h1>
           <div className="md:flex md:w-11/12 w-full mx-auto justify-between p-3">
             <div className="block w-full md:w-5/12">
               <Image
-                src={"/left.png"}
+                src={"/Left.png"}
                 alt="bannerImage"
                 width={320}
                 height={160}
@@ -117,7 +127,7 @@ export default function HomeMain() {
               </p>
               <Link
                 href={"#"}
-                className="px-3 w-6/12 block mx-auto text-center py-2 my-3 rounded-md text-sm font-semibold text-blue-200 bg-[#0095eb] hover:text-gray-100 hover:bg-[#0095eb]"
+                className="px-3 w-6/12 block mx-auto text-center py-2 my-3 rounded-md text-sm font-semibold text-blue-100 bg-[#0095eb] hover:text-gray-100 hover:bg-[#0095eb]"
               >
                 Donate Now
               </Link>

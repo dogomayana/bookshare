@@ -19,12 +19,12 @@ export default function SideNav() {
       </Link>
       <div className="flex flex-col justify-between">
         <div className="mt-11">
-          <h1 className="text-lg mb-5">Navigation</h1>
+          <h1 className="text-lg font-medium mb-5">Navigation</h1>
           <Link
             className={`link ${
               pathname === "/dashboard"
                 ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block text-sm"
+                : "block my-2 text-sm"
             }`}
             href={"/dashboard"}
           >
@@ -35,11 +35,11 @@ export default function SideNav() {
           </Link>
           <Link
             className={`link ${
-              pathname === "/dashboard/allBooks"
+              pathname === "/dashboard/category"
                 ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block"
+                : "block my-2 text-sm"
             }`}
-            href={"/dashboard/allBooks"}
+            href={"/dashboard/category"}
           >
             <span className="mr-2">
               <Icon
@@ -48,25 +48,49 @@ export default function SideNav() {
                 height={20}
               />
             </span>
-            <span className="my-auto inline-block">All Books</span>
+            <span className="my-auto inline-block">Categories</span>
           </Link>
 
           <Link href={"/pages/donateBook"} className="block my-4 text-sm">
             Donate Book
           </Link>
 
-          <h1 className="text-lg mt-10">Book Management</h1>
-          <Link href={"/pages/dashboard"} className="block my-4 text-sm">
-            Dashboard
+          {/* Book Management */}
+          <h1 className="text-lg font-medium mt-10">Book Management</h1>
+          <Link
+            href={"/pages/dashboard"}
+            className={`link ${
+              pathname === "/dashboard/mybooks"
+                ? "block my-2 text-sm p-2 bg-blue-100"
+                : "block my-2 text-sm"
+            }`}
+          >
+            <span className="mr-2">
+              <Icon
+                icon="iconamoon:cloud-download-thin"
+                width={20}
+                height={20}
+              />
+            </span>
+            <span className="my-auto inline-block">Download Book</span>
           </Link>
-          <Link href={"/pages/allBooks"} className="block my-4 text-sm">
-            All Books
-          </Link>
-          <Link href={"/pages/donateBook"} className="block my-4 text-sm">
-            Donate Book
+
+          <Link
+            href={"/dashboard/mybooks"}
+            className={`link ${
+              pathname === "/dashboard/mybooks"
+                ? "block my-2 text-sm p-2 bg-blue-100"
+                : "block my-2 text-sm"
+            }`}
+          >
+            <span className="mr-2">
+              <Icon icon="pepicons-pencil:book" width={20} height={20} />
+            </span>
+            <span className="my-auto inline-block">My Book</span>
           </Link>
         </div>
 
+        {/* Settings Section */}
         <div className="w-full absolute bottom-1">
           <Link href={"#"} className="block my-4 text-sm">
             Help/Support
