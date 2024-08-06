@@ -3,6 +3,8 @@ import { Icon } from "@iconify-icon/react";
 import { createPortal } from "react-dom";
 import Swal from "sweetalert2";
 import FoundItem from "@/app/components/FoundItem";
+import NoItem from "@/app/components/NoItem";
+
 import HomeMain from "./HomeMain";
 import NavBar from "./Navbar";
 import Image from "next/image";
@@ -86,19 +88,8 @@ export default function HomePage() {
               &#128269;
             </button>
           </div>
-          <button onClick={openModal}>Show SweetAlert2 modal</button>
-          <FoundItem isOpen={showModal} onClose={closeModal} />
-          {/* Use createPortal to use the same state between your app and SweetAlert2 */}
-          {/* {swalShown &&
-            createPortal(
-              <div className="w-full bg-purple-900">
-                <Link href="/about" onClick={() => Swal.close()}>
-                  Go to About
-                </Link>
-              </div>,
-
-              Swal.getHtmlContainer()!
-            )}   */}
+          <button onClick={openModal}>Show modal</button>
+          <NoItem isOpen={showModal} onClose={closeModal} />
 
           <div className="w-full flex justify-between mt-7 mb-4">
             <Link
@@ -152,25 +143,8 @@ export default function HomePage() {
               <button className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100">
                 &#128269;
               </button>
-              <button onClick={openModal}>Show SweetAlert2 modal</button>
-              <FoundItem isOpen={showModal} onClose={closeModal} />
-              {/* <button onClick={() => setShowModal(true)}>
-                Show modal using a portal
-              </button>
-              {showModal &&
-                createPortal(
-                  <FoundItem onClose={() => setShowModal(false)} />,
-                  document.body
-                )} */}
-
-              {/* <button onClick={showSwal}>Show SweetAlert2 modal</button> */}
-              {/* Use createPortal to use the same state between your app and SweetAlert2 */}
-              {/* {swalShown &&
-                createPortal(
-                  <FoundItem />,
-
-                  Swal.getTitle()!
-                )} */}
+              <button onClick={openModal}>Show modal</button>
+              <NoItem isOpen={showModal} onClose={closeModal} />
             </div>
 
             <div className="w-full flex justify-between mt-7 mb-4">

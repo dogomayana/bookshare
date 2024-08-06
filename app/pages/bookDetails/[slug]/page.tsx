@@ -91,17 +91,17 @@ export default function Page({ params }: { params: { slug: string } }) {
           {booksCatt.map((book, index) => (
             <div key={index} className="block">
               <Link href={`/pages/${pol}`}>
-                <span className="block h-[171px]">
+                <span className="block">
                   <Image
                     src={book}
                     alt="bannerImage"
-                    width={320}
-                    height={160}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "fill",
-                    }}
+                    width={171}
+                    height={170}
+                    // style={{
+                    //   width: "100%",
+                    //   height: "100%",
+                    //   objectFit: "fill",
+                    // }}
                     priority={true}
                   />
                 </span>
@@ -116,7 +116,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 href={`/pages/${pol}`}
                 className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
               >
-                Read Now
+                Download
               </Link>
               {/* </span> */}
             </div>

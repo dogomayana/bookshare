@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function FoundItem({ isOpen, onClose }) {
+export default function NoItem({ isOpen, onClose }) {
   if (!isOpen) return null;
   return (
     <>
@@ -9,7 +9,7 @@ export default function FoundItem({ isOpen, onClose }) {
         onClick={onClose}
       >
         <div
-          className="w-11/12 md:w-[620px]mx-auto p-3 bg-white rounded-md"
+          className="w-11/12 md:w-[620px] mx-auto p-3 bg-white rounded-md"
           onClick={(e) => e.stopPropagation()}
         >
           <h1 className="text-lg p-3 font-medium text-center">
@@ -22,21 +22,16 @@ export default function FoundItem({ isOpen, onClose }) {
             Book Title: <span className="text-gray-500">The Alchemist</span>
           </p>
           <p className="mt-5 text-center text-[15px]">
-            Book Availabilty: <span className="text-gray-500">Available</span>
+            Book Availabilty:{" "}
+            <span className="text-gray-500">Not Available</span>
           </p>
           <p className="mt-5 text-center text-[15px]">
-            You can downlaod this book
+            Sorry, this book is currently not available. Please try searching
+            for another book
           </p>
-          <span className="flex mt-5 w-10/12 mx-auto justify-evenly">
-            <Link
-              href={`/pages/bookDetails/${"yo"}`}
-              className="w-4/12 p-3 text-center bgColor block rounded-md text-sm text-white"
-            >
-              Download Book
-            </Link>
-
+          <span className="flex mt-5 w-10/12 mx-auto justify-center">
             <button
-              className="w-4/12 p-3 text-sm bg-blue-200 text-blue-600 block rounded-md"
+              className="w-4/12 p-3 text-white font-medium text-sm  bgColor block rounded-md"
               onClick={onClose}
             >
               Close

@@ -48,7 +48,7 @@ export default function Kop() {
                     href={`/pages/${"pol"}`}
                     className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
                   >
-                    Read Now
+                    Download
                   </Link>
                   {/* </span> */}
                 </div>
@@ -85,7 +85,7 @@ export default function Kop() {
                     href={`/pages/${"pol"}`}
                     className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
                   >
-                    Read Now
+                    Download
                   </Link>
                   {/* </span> */}
                 </div>
