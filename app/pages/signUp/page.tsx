@@ -5,8 +5,11 @@ import GoogleBtn from "../../components/GoogleBtn";
 import React from "react";
 import Link from "next/link";
 import NavBar from "@/app/components/Navbar";
+import { createClient } from "@/app/utils/supabase/client";
+import Swal from "sweetalert2";
 
 export default function SignUp() {
+  const supabase = createClient();
   const [userInfo, setUserInfo] = React.useState<any>({
     fullName: "",
     phoneNumber: "",
@@ -15,16 +18,33 @@ export default function SignUp() {
   });
 
   const [isShown, setIsShown] = React.useState<boolean>(false);
+
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const handleChange: ChangeHandler = (event) => {
     const { name, value } = event.target;
     setUserInfo((prev: any) => ({ ...prev, [name]: value }));
-    console.log(userInfo.fullName);
   };
 
   const handleParagraphClick: ParagraphClickHandler = () => {
     setIsShown(!isShown);
   };
-
+  const data = {
+    email: userInfo.emailAddress,
+    password: userInfo.password,
+  };
+  const submitForm = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const { error } = await supabase.auth.signUp(data);
+    if (error?.message) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Something went wrong! ${error?.message}`,
+      });
+    }
+    setIsLoading(false);
+  };
   return (
     <>
       <NavBar />
@@ -37,7 +57,10 @@ export default function SignUp() {
             Unlock a World of Books: Sign Up for BookShare Today
           </p>
         </div>
-        <form className="w-full p-1 md:w-6/12 mx-auto md:p-2">
+        <form
+          onSubmit={submitForm}
+          className="w-full p-1 md:w-6/12 mx-auto md:p-2"
+        >
           <label htmlFor="Full Name" className="block">
             <span className="my-2 block text-gray-600 text-[15px]">
               Full Name
@@ -103,7 +126,7 @@ export default function SignUp() {
             value="Creat Account"
             className="p-3 bg-[#0095eb] hover:bg-black tColor w-full my-3 rounded-md text-sm"
           >
-            Create Account
+            {isLoading ? "Signing In..." : "Create Account"}
           </button>
         </form>
         <span className="w-full md:w-5/12 mt-4">
@@ -112,7 +135,7 @@ export default function SignUp() {
         <p className="text-center mb-5 mt-4 text-sm">
           Already have an account?{" "}
           <Link href="/pages/logIn" className="text-blue-500">
-            Login
+            Log In
           </Link>
         </p>
       </main>

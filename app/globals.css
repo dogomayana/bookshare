@@ -36,3 +36,9 @@ body {
 .focus:focus{
   border: 1px solid #0095eb;
 }
+.trans{
+
+  background-color: #ffffff;
+  opacity: .4;
+
+}

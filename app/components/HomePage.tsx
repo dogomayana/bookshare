@@ -17,6 +17,18 @@ export default function HomePage() {
   const [showModal, setShowModal] = React.useState(false);
   const [swalShown, setSwalShown] = React.useState(false);
 
+  const openModal = () => {
+    if (typeof document !== undefined) {
+      document.body.style.overflow = "hidden";
+    }
+    setShowModal(true);
+  };
+  const closeModal = () => {
+    if (typeof document !== undefined) {
+      document.body.style.overflow = "auto";
+    }
+    setShowModal(false);
+  };
   const showSwal = () => {
     Swal.fire({
       didOpen: () => setSwalShown(true),
@@ -74,7 +86,8 @@ export default function HomePage() {
               &#128269;
             </button>
           </div>
-          {/* <button onClick={showSwal}>Show SweetAlert2 modal</button>
+          <button onClick={openModal}>Show SweetAlert2 modal</button>
+          <FoundItem isOpen={showModal} onClose={closeModal} />
           {/* Use createPortal to use the same state between your app and SweetAlert2 */}
           {/* {swalShown &&
             createPortal(
@@ -139,6 +152,8 @@ export default function HomePage() {
               <button className="p-3 rounded-md w-auto bg-[#0095eb] text-gray-100">
                 &#128269;
               </button>
+              <button onClick={openModal}>Show SweetAlert2 modal</button>
+              <FoundItem isOpen={showModal} onClose={closeModal} />
               {/* <button onClick={() => setShowModal(true)}>
                 Show modal using a portal
               </button>

@@ -112,9 +112,10 @@ function DonateBook() {
           <option value={""} className="text-gray-600 text-[15px]">
             Book Categories
           </option>
-          <option value="nce">Drama</option>
-          <option value="BEd">Software Development</option>
-          <option value="BEd">Kiddes</option>
+          <option value="finance">Finance</option>
+          <option value="tech">Tech</option>
+          <option value="travel">Travel</option>
+          <option value="education">Education</option>
         </select>
         <label htmlFor="isbn" className="block">
           <span className="my-3 block text-gray-600 text-[15px]">ISBN</span>

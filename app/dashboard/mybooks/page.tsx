@@ -20,7 +20,7 @@ export default function Mybooks() {
           <article className="w-full bg-white border-gray-500 border my-5 rounded-md">
             <h1 className="text-lg font-medium pl-5 py-3">Downloaded Books</h1>
 
-            <div className="w-full mt-10 md:w-11/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
+            <div className="w-full mt-10 md:w-11/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-4 gap-5 place-content-center">
               {booksCatt.map((book, index) => (
                 <div key={index} className="block">
                   <Link href={`/pages/bookDetails/${pol}`}>
@@ -45,7 +45,7 @@ export default function Mybooks() {
 
                   <Link
                     href={`/pages/${pol}`}
-                    className="px-3 block text-center py-2 my-3 rounded-md text-sm font-semibold text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
+                    className="px-3 block text-center py-2 my-3 rounded-md text-sm font-medium text-[#0095eb] bg-blue-200 hover:text-gray-100 hover:bg-[#0095eb]"
                   >
                     Download
                   </Link>

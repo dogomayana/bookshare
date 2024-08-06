@@ -5,23 +5,44 @@ import GoogleBtn from "../../components/GoogleBtn";
 import React from "react";
 import Link from "next/link";
 import NavBar from "@/app/components/Navbar";
+import { createClient } from "@/app/utils/supabase/client";
+import Swal from "sweetalert2";
 
 export default function LogIn() {
+  const supabase = createClient();
   const [userInfo, setUserInfo] = React.useState<any>({
     emailAddress: "",
     password: "",
   });
   const [isShown, setIsShown] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const handleParagraphClick: ParagraphClickHandler = () => {
     setIsShown(!isShown);
-    // console.log("Paragraph clicked", event);
-    // alert("working");
   };
+
   const handleChange: ChangeHandler = (event) => {
     const { name, value } = event.target;
     setUserInfo((prev: any) => ({ ...prev, [name]: value }));
     console.log(userInfo.fullName);
+  };
+  const data = {
+    email: userInfo.emailAddress,
+    password: userInfo.password,
+  };
+
+  const submitForm = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const { error } = await supabase.auth.signInWithPassword(data);
+    if (error?.message) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Something went wrong! ${error?.message}`,
+      });
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -34,7 +55,10 @@ export default function LogIn() {
             Continue with BookShare
           </p>
         </div>
-        <form className="w-full p-1 md:w-6/12 mx-auto md:p-2">
+        <form
+          onSubmit={submitForm}
+          className="w-full p-1 md:w-6/12 mx-auto md:p-2"
+        >
           <label htmlFor="Email Address" className="block my-5">
             <span className="my-2 block text-gray-600 text-[15px]">
               Email Address
