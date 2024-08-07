@@ -1,8 +1,15 @@
+"use client";
 import CatNav from "@/app/components/CatNav";
 import NavBar from "@/app/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-export default function Page({ params }: { params: { slug: string } }) {
+import { usePathname } from "next/navigation";
+
+export default function Page({ params }: { params: { category: string } }) {
+  const pathname = usePathname();
+
+  const catSlug = params.category;
+
   const categories = ["finance", "tech", "travel", "education"];
   const booksCatt = [
     "/book3.png",
@@ -23,14 +30,22 @@ export default function Page({ params }: { params: { slug: string } }) {
       <CatNav />
       <div className="bg-white w-full rounded-md border border-red-700">
         <nav className=" w-full p-2 flex flex-wrap space-x-5 justify-center">
-          <span className="p-3 rounded-md capitalize bgColor text-white border border-blue-700">
+          <Link
+            href={`/dashboard/category/`}
+            className="p-3 rounded-md capitalize border border-blue-700"
+          >
             All
-          </span>
+          </Link>
           {categories.map((cat, index) => (
             <Link
               key={index}
               href={`/dashboard/category/${cat}`}
-              className="px-5 py-3 rounded-md capitalize border border-blue-700"
+              className={`link ${
+                pathname.includes(catSlug) && categories[index] === catSlug
+                  ? "px-5 py-3 rounded-md capitalize bgColor text-white border border-blue-700"
+                  : "px-5 py-3 rounded-md capitalize border border-blue-700"
+              }`}
+              // className="px-5 py-3 rounded-md capitalize border border-blue-700"
             >
               {cat}
             </Link>

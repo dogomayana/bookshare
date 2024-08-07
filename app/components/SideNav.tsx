@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function SideNav() {
   const pathname = usePathname();
   return (
-    <div className="p-4 fixed bg-white h-screen left-0 flex-none md:w-64">
+    <div className="hidden md:block md:p-4 md:fixed md:bg-white md:h-screen md:left-0 md:flex-none md:w-64">
       <Link href={"/"} className="text-base my-auto hover:text-[#0095eb]">
         <Image
           src="/jlogo.png"
@@ -24,7 +24,7 @@ export default function SideNav() {
             className={`link ${
               pathname === "/dashboard"
                 ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 text-sm"
+                : "block my-2 p-2 text-sm"
             }`}
             href={"/dashboard"}
           >
@@ -35,9 +35,9 @@ export default function SideNav() {
           </Link>
           <Link
             className={`link ${
-              pathname === "/dashboard/category"
+              pathname.includes("/dashboard/category")
                 ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 text-sm"
+                : "block my-2 p-2 text-sm"
             }`}
             href={"/dashboard/category"}
           >
@@ -51,7 +51,7 @@ export default function SideNav() {
             <span className="my-auto inline-block">Categories</span>
           </Link>
 
-          <Link href={"/pages/donateBook"} className="block my-4 text-sm">
+          <Link href={"/pages/donateBook"} className="block my-4 p-2 text-sm">
             Donate Book
           </Link>
 
@@ -62,7 +62,7 @@ export default function SideNav() {
             className={`link ${
               pathname === "/dashboard/mybooks"
                 ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 text-sm"
+                : "block my-2 p-2 text-sm"
             }`}
           >
             <span className="mr-2">
@@ -80,7 +80,7 @@ export default function SideNav() {
             className={`link ${
               pathname === "/dashboard/mybooks"
                 ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 text-sm"
+                : "block my-2 p-2 text-sm"
             }`}
           >
             <span className="mr-2">

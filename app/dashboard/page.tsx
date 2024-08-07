@@ -7,8 +7,8 @@ export default function Kop() {
   return (
     <>
       <DashNav />
-      <main className="w-full mt-2 flex justify-between space-x-4">
-        <div className="w-9/12">
+      <main className="w-full mt-2 md:flex md:justify-between md:space-x-4">
+        <div className="w-full md:w-9/12">
           <div className="grid grid-cols-3 gap-4">
             <span className="block rounded-md bg-white p-3">
               <h2>Book of the Week</h2>
@@ -95,7 +95,7 @@ export default function Kop() {
         </div>
 
         {/* Side content */}
-        <div className="w-3/12">
+        <div className="w-full mt-2 md:mt-0 md:w-3/12">
           <div className="bgColor rounded-md p-4">
             <p className="text-center text-white">
               Donate books and help us spread knowledge around the world
@@ -109,13 +109,13 @@ export default function Kop() {
           </div>
           <div className="mt-8 p-3 bg-white rounded-md">
             <h1 className="text-center">Book Details</h1>
-            <span className="my-3 block mx-auto">
+            <span className="my-3 block w-[180px] mx-auto overflow-hidden">
               <Image
                 src={"/book2.png"}
                 alt="bannerImage"
                 width={171}
                 height={170}
-                // style={{margin:"0, auto"}}
+                style={{ width: "auto", objectFit: "fill" }}
                 priority={true}
               />
             </span>
