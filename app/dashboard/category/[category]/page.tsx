@@ -28,8 +28,8 @@ export default function Page({ params }: { params: { category: string } }) {
   return (
     <>
       <CatNav />
-      <div className="bg-white w-full rounded-md border border-red-700">
-        <nav className=" w-full p-2 flex flex-wrap space-x-5 justify-center">
+      <div className="bg-white w-full p-3 mt-5 md:mt-0 rounded-md border border-red-700">
+        <nav className=" w-full p-2 flex flex-wrap gap-3 md:space-x-5 justify-center">
           <Link
             href={`/dashboard/category/`}
             className="p-3 rounded-md capitalize border border-blue-700"
@@ -55,7 +55,7 @@ export default function Page({ params }: { params: { category: string } }) {
         <div className="w-11/12 my-8 mx-auto p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
           {booksCatt.map((book, index) => (
             <div key={index} className="block">
-              <Link href={`/pages/${"pol"}`}>
+              <Link href={`/pages/bookDetails/${"pol"}`}>
                 <span className="block">
                   <Image
                     src={book}

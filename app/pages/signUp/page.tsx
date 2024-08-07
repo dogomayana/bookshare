@@ -45,6 +45,14 @@ export default function SignUp() {
     }
     setIsLoading(false);
   };
+  const googleSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: location.origin + `/auth/callback`,
+      },
+    });
+  };
   return (
     <>
       <NavBar />
