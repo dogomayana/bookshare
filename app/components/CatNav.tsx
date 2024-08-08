@@ -1,15 +1,26 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { Icon } from "@iconify-icon/react";
 
+import { usePathname } from "next/navigation";
 import HamburgerIcon from "./HamburgerIcon";
 import React from "react";
 
 export default function CatNav() {
+  const pathname = usePathname();
+
   const [reveal, setReveal] = React.useState(false);
 
   function showDropdownContent() {
+    if (typeof document !== undefined) {
+      document.body.style.overflow = "hidden";
+    }
     setReveal(!reveal);
+
+    if (reveal === true && typeof document !== undefined) {
+      document.body.style.overflow = "auto";
+    }
   }
   return (
     <>
@@ -51,8 +62,102 @@ export default function CatNav() {
         {reveal && (
           <div
             onClick={showDropdownContent}
-            className="px-2 bg-white w-full md:hidden lg:hidden border border-gray-50"
-          ></div>
+            className="px-2 bg-white h-screen mt-16 w-full absolute top-0 md:hidden lg:hidden border border-gray-50"
+          >
+            <div className="">
+              <div className="mt-11">
+                <h1 className="text-lg font-medium mb-5">Navigation</h1>
+                <Link
+                  className={`link ${
+                    pathname === "/dashboard"
+                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      : "block my-2 p-2 text-sm"
+                  }`}
+                  href={"/dashboard"}
+                >
+                  <span className="mr-2">
+                    <Icon
+                      icon="mdi-light:view-dashboard"
+                      width={20}
+                      height={20}
+                    />
+                  </span>
+                  <span className="my-auto inline-block">Dashboard</span>
+                </Link>
+                <Link
+                  className={`link ${
+                    pathname.includes("/dashboard/category")
+                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      : "block my-2 p-2 text-sm"
+                  }`}
+                  href={"/dashboard/category"}
+                >
+                  <span className="mr-2">
+                    <Icon
+                      icon="material-symbols-light:category-outline"
+                      width={20}
+                      height={20}
+                    />
+                  </span>
+                  <span className="my-auto inline-block">Categories</span>
+                </Link>
+
+                <Link
+                  href={"/pages/donateBook"}
+                  className="block my-4 p-2 text-sm"
+                >
+                  Donate Book
+                </Link>
+
+                {/* Book Management */}
+                <h1 className="text-lg font-medium mt-10">Book Management</h1>
+                <Link
+                  href={"/pages/dashboard"}
+                  className={`link ${
+                    pathname === "/dashboard/mybooks"
+                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      : "block my-2 p-2 text-sm"
+                  }`}
+                >
+                  <span className="mr-2">
+                    <Icon
+                      icon="iconamoon:cloud-download-thin"
+                      width={20}
+                      height={20}
+                    />
+                  </span>
+                  <span className="my-auto inline-block">Download Book</span>
+                </Link>
+
+                <Link
+                  href={"/dashboard/mybooks"}
+                  className={`link ${
+                    pathname === "/dashboard/mybooks"
+                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      : "block my-2 p-2 text-sm"
+                  }`}
+                >
+                  <span className="mr-2">
+                    <Icon icon="pepicons-pencil:book" width={20} height={20} />
+                  </span>
+                  <span className="my-auto inline-block">My Book</span>
+                </Link>
+              </div>
+
+              {/* Settings Section */}
+              <div className="w-full absolute bottom-20">
+                <Link href={"#"} className="block my-4 text-sm">
+                  Help/Support
+                </Link>
+                <Link href={"#"} className="block my-4 text-sm">
+                  Settings
+                </Link>
+                <Link href={"#"} className="block text-sm">
+                  Log Out
+                </Link>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </>

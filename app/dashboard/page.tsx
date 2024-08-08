@@ -1,13 +1,16 @@
 import Link from "next/link";
 import DashNav from "../components/DashNav";
 import Image from "next/image";
+import CatNav from "../components/CatNav";
 
 export default function Kop() {
   const booksCatt = ["/book3.png", "/book4.png", "/book_1.png", "/book2.png"];
   return (
     <>
+      <CatNav />
+
       <DashNav />
-      <main className="w-full mt-2 md:flex md:justify-between md:space-x-4">
+      <main className="w-11/12 mx-auto md:w-full mt-2 md:flex md:justify-between md:space-x-4">
         <div className="w-full md:w-9/12">
           <div className="grid grid-cols-3 gap-4">
             <span className="block rounded-md bg-white p-3">

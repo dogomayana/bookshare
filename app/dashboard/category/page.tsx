@@ -19,16 +19,16 @@ export default function catPage() {
   return (
     <>
       <CatNav />
-      <div className="bg-white w-full mt-5 md:mt-0 p-3 rounded-md border border-red-700">
-        <nav className=" w-full p-2 flex flex-wrap gap-3 md:space-x-5 justify-center">
-          <span className="p-3 rounded-md capitalize bgColor text-white border border-blue-700">
+      <div className="bg-white w-11/12 mx-auto md:w-full mt-5 md:mt-0 p-3 rounded-md border border-red-700">
+        <nav className="w-full p-2 flex flex-wrap gap-3 md:space-x-5 justify-center">
+          <span className="p-3 rounded-md capitalize bgColor text-white border border-[#0095eb]">
             All
           </span>
           {categories.map((cat, index) => (
             <Link
               key={index}
               href={`/dashboard/category/${cat}`}
-              className="px-5 py-3 rounded-md capitalize border border-blue-700"
+              className="px-5 py-3 rounded-md capitalize border border-[#0095eb]"
             >
               {cat}
             </Link>
