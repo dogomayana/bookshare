@@ -145,9 +145,7 @@ export default function CatNav() {
                   <span className="my-auto inline-block">Donate Book</span>
                 </Link>
                 {/* Book Management */}
-                <h1 className="text-lg font-medium mt-6 text-[14px]">
-                  Book Management
-                </h1>
+                <h1 className="text-lg font-medium mt-6">Book Management</h1>
                 <Link
                   href={"/pages/dashboard"}
                   className={`link ${
