@@ -30,7 +30,7 @@ export default function CatNav() {
         <span className="block p-4">nbnallal</span>
       </nav>
 
-      <div className="md:hidden mb-10 md:mb-0">
+      <div className="md:hidden md:mb-0">
         <nav className="w-full py-3 px-4 md:px-8 flex justify-between border-blue-50 border  bg-white">
           <Link href={"/"} className="text-base my-auto hover:text-[#0095eb]">
             <Image
@@ -62,16 +62,41 @@ export default function CatNav() {
         {reveal && (
           <div
             onClick={showDropdownContent}
-            className="px-2 bg-white h-screen mt-16 w-full absolute top-0 md:hidden lg:hidden border border-gray-50"
+            className="px-2 bg-white h-screen overflow-auto w-full absolute top-0 md:hidden lg:hidden border border-gray-50"
           >
             <div className="">
-              <div className="mt-11">
+              <nav className="w-full py-3 md:px-8 flex justify-between bg-white">
+                <Link
+                  href={"/"}
+                  className="text-base my-auto hover:text-[#0095eb]"
+                >
+                  <Image src="/jlogo.png" alt="logo" width={150} height={50} />
+                </Link>
+
+                <button
+                  aria-label="nav_button"
+                  id="buttonTitle"
+                  className="block md:hidden lg:hidden"
+                  onClick={showDropdownContent}
+                >
+                  {reveal ? (
+                    "X"
+                  ) : (
+                    <HamburgerIcon
+                      aria-label="nav_button"
+                      className={"h-7 w-6 text-black font-bold "}
+                    />
+                  )}
+                </button>
+              </nav>
+
+              <div className="mt-8">
                 <h1 className="text-lg font-medium mb-5">Navigation</h1>
                 <Link
                   className={`link ${
                     pathname === "/dashboard"
                       ? "block my-2 text-sm p-2 bg-blue-100"
-                      : "block my-2 p-2 text-sm"
+                      : "block my-2 p-2 text-[14px]"
                   }`}
                   href={"/dashboard"}
                 >
@@ -88,7 +113,7 @@ export default function CatNav() {
                   className={`link ${
                     pathname.includes("/dashboard/category")
                       ? "block my-2 text-sm p-2 bg-blue-100"
-                      : "block my-2 p-2 text-sm"
+                      : "block my-2 p-2 text-[14px]"
                   }`}
                   href={"/dashboard/category"}
                 >
@@ -103,14 +128,26 @@ export default function CatNav() {
                 </Link>
 
                 <Link
+                  className={`link ${
+                    pathname.includes("/dashboard/category")
+                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      : "block my-2 p-2 text-[14px]"
+                  }`}
                   href={"/pages/donateBook"}
-                  className="block my-4 p-2 text-sm"
                 >
-                  Donate Book
+                  <span className="mr-2">
+                    <Icon
+                      icon="fluent:book-add-28-regular"
+                      width={20}
+                      height={20}
+                    />
+                  </span>
+                  <span className="my-auto inline-block">Donate Book</span>
                 </Link>
-
                 {/* Book Management */}
-                <h1 className="text-lg font-medium mt-10">Book Management</h1>
+                <h1 className="text-lg font-medium mt-6 text-[14px]">
+                  Book Management
+                </h1>
                 <Link
                   href={"/pages/dashboard"}
                   className={`link ${
@@ -126,7 +163,9 @@ export default function CatNav() {
                       height={20}
                     />
                   </span>
-                  <span className="my-auto inline-block">Download Book</span>
+                  <span className="my-auto inline-block text-[14px]">
+                    Download Book
+                  </span>
                 </Link>
 
                 <Link
@@ -140,19 +179,22 @@ export default function CatNav() {
                   <span className="mr-2">
                     <Icon icon="pepicons-pencil:book" width={20} height={20} />
                   </span>
-                  <span className="my-auto inline-block">My Book</span>
+                  <span className="my-auto inline-block text-[14px]">
+                    My Book
+                  </span>
                 </Link>
               </div>
 
               {/* Settings Section */}
-              <div className="w-full absolute bottom-20">
-                <Link href={"#"} className="block my-4 text-sm">
+              <div className="w-full mt-10">
+                <hr />
+                <Link href={"#"} className="block my-2 p-2 text-sm">
                   Help/Support
                 </Link>
-                <Link href={"#"} className="block my-4 text-sm">
+                <Link href={"#"} className="block my-2 p-2 text-sm">
                   Settings
                 </Link>
-                <Link href={"#"} className="block text-sm">
+                <Link href={"#"} className="block my-2 p-2 text-sm">
                   Log Out
                 </Link>
               </div>
