@@ -62,7 +62,7 @@ export default function CatNav() {
         {reveal && (
           <div
             onClick={showDropdownContent}
-            className="px-2 bg-white h-screen overflow-auto w-full absolute top-0 md:hidden lg:hidden border border-gray-50"
+            className="px-2 bg-white w-full absolute top-0 md:hidden lg:hidden border border-gray-50"
           >
             <div className="">
               <nav className="w-full py-3 md:px-8 flex justify-between bg-white">
