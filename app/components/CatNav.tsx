@@ -13,14 +13,14 @@ export default function CatNav() {
   const [reveal, setReveal] = React.useState(false);
 
   function showDropdownContent() {
-    if (typeof document !== undefined) {
-      document.body.style.overflow = "hidden";
-    }
+    // if (typeof document !== undefined) {
+    //   document.body.style.overflow = "hidden";
+    // }
     setReveal(!reveal);
 
-    if (reveal === true && typeof document !== undefined) {
-      document.body.style.overflow = "auto";
-    }
+    // if (reveal === true && typeof document !== undefined) {
+    //   document.body.style.overflow = "auto";
+    // }
   }
   return (
     <>
@@ -161,9 +161,7 @@ export default function CatNav() {
                       height={20}
                     />
                   </span>
-                  <span className="my-auto inline-block ">
-                    Download Bookk
-                  </span>
+                  <span className="my-auto inline-block ">Download Bookk</span>
                 </Link>
 
                 <Link
