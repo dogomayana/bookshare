@@ -95,7 +95,7 @@ export default function CatNav() {
                 <Link
                   className={`link ${
                     pathname === "/dashboard"
-                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      ? "block my-2 text-[14px] p-2 bg-blue-100"
                       : "block my-2 p-2 text-[14px]"
                   }`}
                   href={"/dashboard"}
@@ -112,7 +112,7 @@ export default function CatNav() {
                 <Link
                   className={`link ${
                     pathname.includes("/dashboard/category")
-                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      ? "block my-2 text-[14px] p-2 bg-blue-100"
                       : "block my-2 p-2 text-[14px]"
                   }`}
                   href={"/dashboard/category"}
@@ -130,7 +130,7 @@ export default function CatNav() {
                 <Link
                   className={`link ${
                     pathname.includes("/dashboard/category")
-                      ? "block my-2 text-sm p-2 bg-blue-100"
+                      ? "block my-2 text-[14px] p-2 bg-blue-100"
                       : "block my-2 p-2 text-[14px]"
                   }`}
                   href={"/pages/donateBook"}
@@ -150,8 +150,8 @@ export default function CatNav() {
                   href={"/pages/dashboard"}
                   className={`link ${
                     pathname === "/dashboard/mybooks"
-                      ? "block my-2 text-sm p-2 bg-blue-100"
-                      : "block my-2 p-2 text-sm"
+                      ? "block my-2 text-[14px] p-2 bg-blue-100"
+                      : "block my-2 p-2 text-[14px]"
                   }`}
                 >
                   <span className="mr-2">
@@ -161,8 +161,8 @@ export default function CatNav() {
                       height={20}
                     />
                   </span>
-                  <span className="my-auto inline-block text-[14px]">
-                    Download Book
+                  <span className="my-auto inline-block ">
+                    Download Bookk
                   </span>
                 </Link>
 
@@ -170,8 +170,8 @@ export default function CatNav() {
                   href={"/dashboard/mybooks"}
                   className={`link ${
                     pathname === "/dashboard/mybooks"
-                      ? "block my-2 text-sm p-2 bg-blue-100"
-                      : "block my-2 p-2 text-sm"
+                      ? "block my-2 text-[14px] p-2 bg-blue-100"
+                      : "block my-2 p-2 text-[14px]"
                   }`}
                 >
                   <span className="mr-2">
@@ -186,13 +186,13 @@ export default function CatNav() {
               {/* Settings Section */}
               <div className="w-full mt-10">
                 <hr />
-                <Link href={"#"} className="block my-2 p-2 text-sm">
+                <Link href={"#"} className="block my-2 p-2 text-[14px]">
                   Help/Support
                 </Link>
-                <Link href={"#"} className="block my-2 p-2 text-sm">
+                <Link href={"#"} className="block my-2 p-2 text-[14px]">
                   Settings
                 </Link>
-                <Link href={"#"} className="block my-2 p-2 text-sm">
+                <Link href={"#"} className="block my-2 p-2 text-[14px]">
                   Log Out
                 </Link>
               </div>
