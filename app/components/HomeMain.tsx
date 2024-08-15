@@ -96,8 +96,8 @@ export default function HomeMain() {
 
         <article className="mt-16">
           <h1 className="text-center my-8 text-lg">About BookShare</h1>
-          <div className="md:flex md:w-11/12 w-full mx-auto justify-between p-3">
-            <div className="block w-full md:w-5/12">
+          <div className="md:flex md:w-11/12 w-full mx-auto justify-evenly p-3">
+            <div className="block w-full md:w-[360px]">
               <Image
                 src={"/Left.png"}
                 alt="bannerImage"
@@ -110,20 +110,16 @@ export default function HomeMain() {
 
             <div className="w-full md:w-5/12">
               <p className="text-sm p-3">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint,
-                in. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut,
-                vitae consequatur quam cupiditate delectus et facere ea debitis
-                totam quis tempore, odio quo officiis nostrum, at commodi
-                facilis tenetur dolorum quibusdam? Nostrum ad corrupti tempore
-                rerum earum impedit pariatur sunt saepe? Accusamus esse
-                doloremque veritatis, consequatur blanditiis mollitia, itaque
-                officia omnis sequi, laborum aliquid perferendis. Illo incidunt
-                dolores assumenda autem dolore excepturi rem quam tempora minus.
-                Ipsam, animi maxime similique quae corporis numquam repellendus
-                expedita provident cumque fuga officiis. Consequatur, reiciendis
-                necessitatibus hic perspiciatis ullam, totam deserunt enim error
-                tempora magni sit ea ipsa eum quibusdam quas autem dolorum
-                corporis.
+                
+
+BookShare is a platform dedicated to promoting literacy
+and access to books for everyone. We believe that everyone
+should have the opportunity to read and learn, regardless of
+their financial situation. With our vast digital collection
+and user-friendly interface, we make it easy for people
+to donate books and browse our collection. Join us in our
+mission to spread the joy of reading
+
               </p>
               <Link
                 href={"#"}
