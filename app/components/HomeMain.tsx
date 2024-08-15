@@ -207,7 +207,7 @@ BookShare offers a vast digital collection of books, including classics, bestsel
                 
 
 
-Our intuitive and user-friendly interface makes it easy to find and discover new books. Browse by genre, author, or title, and filter results to find exactly what you're looking for. Reading has never been more enjoyable and accessible.
+Our intuitive and user-friendly interface makes it easy to find and discover new books. Browse by genre, author, or title, and filter results to find exactly what you&apos;re looking for. Reading has never been more enjoyable and accessible.
 
                 
               </p>
