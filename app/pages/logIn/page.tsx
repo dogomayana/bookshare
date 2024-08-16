@@ -101,11 +101,8 @@ export default function LogIn() {
               onChange={handleChange}
               required
               className="p-3 w-full block border rounded-md border-gray-400 placeholder:text-sm"
-              placeholder="user@gamil.com"
+              placeholder="user@gmail.com"
             />
-            {/* <p className="mt-2 hidden peer-invalid:visible text-pink-600">
-              Enter a valid email address
-            </p> */}
           </label>
           <label htmlFor="Password" className="block">
             <span className="my-2 block text-gray-600 text-[15px]">

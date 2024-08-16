@@ -23,21 +23,21 @@ export default function SideNav() {
           <Link
             className={`link ${
               pathname === "/dashboard"
-                ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 p-2 text-sm"
+                ? "flex my-2 text-sm p-2 bg-blue-100"
+                : "flex my-2 p-2 text-sm"
             }`}
             href={"/dashboard"}
           >
             <span className="mr-2">
               <Icon icon="mdi-light:view-dashboard" width={20} height={20} />
             </span>
-            <span className="my-auto inline-block">Dashboard</span>
+            <span className="my-auto block">Dashboard</span>
           </Link>
           <Link
             className={`link ${
               pathname.includes("/dashboard/category")
-                ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 p-2 text-sm"
+                ? "flex my-2 text-sm p-2 bg-blue-100"
+                : "flex my-2 p-2 text-sm"
             }`}
             href={"/dashboard/category"}
           >
@@ -48,11 +48,14 @@ export default function SideNav() {
                 height={20}
               />
             </span>
-            <span className="my-auto inline-block">Categories</span>
+            <span className="my-auto block">Categories</span>
           </Link>
 
-          <Link href={"/pages/donateBook"} className="block my-4 p-2 text-sm">
-            Donate Book
+          <Link href={"/pages/donateBook"} className="flex my-4 p-2 text-sm">
+            <span className="mr-2">
+              <Icon icon="fluent:book-add-28-regular" width={20} height={20} />
+            </span>
+            <span className="my-auto block"> Donate Book</span>
           </Link>
 
           {/* Book Management */}
@@ -61,8 +64,8 @@ export default function SideNav() {
             href={"/pages/dashboard"}
             className={`link ${
               pathname === "/dashboard/mybooks"
-                ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 p-2 text-sm"
+                ? "flex my-2 text-sm p-2 bg-blue-100"
+                : "flex my-2 p-2 text-sm"
             }`}
           >
             <span className="mr-2">
@@ -72,21 +75,21 @@ export default function SideNav() {
                 height={20}
               />
             </span>
-            <span className="my-auto inline-block">Download Book</span>
+            <span className="my-auto block">Download Book</span>
           </Link>
 
           <Link
             href={"/dashboard/mybooks"}
             className={`link ${
               pathname === "/dashboard/mybooks"
-                ? "block my-2 text-sm p-2 bg-blue-100"
-                : "block my-2 p-2 text-sm"
+                ? "flex my-2 text-sm p-2 bg-blue-100"
+                : "flex my-2 p-2 text-sm"
             }`}
           >
             <span className="mr-2">
               <Icon icon="pepicons-pencil:book" width={20} height={20} />
             </span>
-            <span className="my-auto inline-block">My Book</span>
+            <span className="my-auto block">My Book</span>
           </Link>
         </div>
 

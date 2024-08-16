@@ -190,7 +190,7 @@ export default function HomePage() {
                 priority={true}
               />
             </span>
-            <p className="text-sm text-center mt-2">
+            <p className="text-sm text-center md:text-start mt-2">
               Empowering a community of readers and learners one book at a time
               through seamless sharing and access.
             </p>

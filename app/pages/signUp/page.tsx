@@ -130,7 +130,7 @@ export default function SignUp() {
               onChange={handleChange}
               required
               className="p-3 w-full block border rounded-md border-gray-400 placeholder:text-sm"
-              placeholder="user@gamil.com"
+              placeholder="user@gmail.com"
             />
           </label>
           <label htmlFor="Password" className="block">

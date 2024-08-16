@@ -24,12 +24,6 @@ export default function CatNav() {
   }
   return (
     <>
-      <nav className="hidden w-full md:flex flex-wrap">
-        <span className="block p-4">Mallal</span>
-        <span className="block p-4">ytytallal</span>
-        <span className="block p-4">nbnallal</span>
-      </nav>
-
       <div className="md:hidden md:mb-0">
         <nav className="w-full py-3 px-4 md:px-8 flex justify-between border-blue-50 border  bg-white">
           <Link href={"/"} className="text-base my-auto hover:text-[#0095eb]">
@@ -95,8 +89,8 @@ export default function CatNav() {
               <Link
                 className={`link ${
                   pathname === "/dashboard"
-                    ? "block my-2 text-[14px] p-2 bg-blue-100"
-                    : "block my-2 p-2 text-[14px]"
+                    ? "flex my-2 text-[14px] p-2 bg-blue-100"
+                    : "flex my-2 p-2 text-[14px]"
                 }`}
                 href={"/dashboard"}
               >
@@ -107,13 +101,13 @@ export default function CatNav() {
                     height={20}
                   />
                 </span>
-                <span className="my-auto inline-block">Dashboard</span>
+                <span className="my-auto block">Dashboard</span>
               </Link>
               <Link
                 className={`link ${
                   pathname.includes("/dashboard/category")
-                    ? "block my-2 text-[14px] p-2 bg-blue-100"
-                    : "block my-2 p-2 text-[14px]"
+                    ? "flex my-2 text-[14px] p-2 bg-blue-100"
+                    : "flex my-2 p-2 text-[14px]"
                 }`}
                 href={"/dashboard/category"}
               >
@@ -124,14 +118,14 @@ export default function CatNav() {
                     height={20}
                   />
                 </span>
-                <span className="my-auto inline-block">Categories</span>
+                <span className="my-auto block">Categories</span>
               </Link>
 
               <Link
                 className={`link ${
                   pathname.includes("/dashboard/category")
-                    ? "block my-2 text-[14px] p-2 bg-blue-100"
-                    : "block my-2 p-2 text-[14px]"
+                    ? "flex my-2 text-[14px] p-2 bg-blue-100"
+                    : "flex my-2 p-2 text-[14px]"
                 }`}
                 href={"/pages/donateBook"}
               >
@@ -142,7 +136,7 @@ export default function CatNav() {
                     height={20}
                   />
                 </span>
-                <span className="my-auto inline-block">Donate Book</span>
+                <span className="my-auto block">Donate Book</span>
               </Link>
               {/* Book Management */}
               <h1 className="text-lg font-medium mt-6">Book Management</h1>
@@ -150,8 +144,8 @@ export default function CatNav() {
                 href={"/pages/dashboard"}
                 className={`link ${
                   pathname === "/dashboard/mybooks"
-                    ? "block my-2 text-[14px] p-2 bg-blue-100"
-                    : "block my-2 p-2 text-[14px]"
+                    ? "flex my-2 text-[14px] p-2 bg-blue-100"
+                    : "flex my-2 p-2 text-[14px]"
                 }`}
               >
                 <span className="mr-2">
@@ -161,23 +155,21 @@ export default function CatNav() {
                     height={20}
                   />
                 </span>
-                <span className="my-auto inline-block ">Download Bookk</span>
+                <span className="my-auto block ">Download Bookk</span>
               </Link>
 
               <Link
                 href={"/dashboard/mybooks"}
                 className={`link ${
                   pathname === "/dashboard/mybooks"
-                    ? "block my-2 text-[14px] p-2 bg-blue-100"
-                    : "block my-2 p-2 text-[14px]"
+                    ? "flex my-2 text-[14px] p-2 bg-blue-100"
+                    : "flex my-2 p-2 text-[14px]"
                 }`}
               >
                 <span className="mr-2">
                   <Icon icon="pepicons-pencil:book" width={20} height={20} />
                 </span>
-                <span className="my-auto inline-block text-[14px]">
-                  My Book
-                </span>
+                <span className="my-auto block text-[14px]">My Book</span>
               </Link>
             </div>
 

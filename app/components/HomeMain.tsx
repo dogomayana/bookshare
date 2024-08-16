@@ -31,7 +31,7 @@ export default function HomeMain() {
         </h1>
         <div className="w-full my-8 md:w-10/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-4 place-content-center">
           {booksCat.map((book, index) => (
-            <span key={index} className="block p-3 border border-red-500">
+            <span key={index} className="block p-3">
               <Image
                 src={book.imgSrc}
                 alt="bannerImage"
@@ -41,7 +41,7 @@ export default function HomeMain() {
               />
               <Link
                 href={`/pages/category/${book.value}`}
-                className="text-center"
+                className="text-center block"
               >
                 {book.name}
               </Link>
@@ -56,9 +56,9 @@ export default function HomeMain() {
 
           <div className="w-full md:w-11/12 mx-auto bg-[#f3f4f6] p-3 grid grid-cols-2 md:grid-cols-5 gap-5 place-content-center">
             {booksCatt.map((book, index) => (
-              <div key={index} className="block">
+              <div key={index} className="block shadow-md p-1">
                 <Link href={`/pages/${pol}`} className="cursor-pointer ">
-                  <span key={index} className="block p-3 border border-red-500">
+                  <span key={index} className="block p-3">
                     <Image
                       src={book}
                       alt="bannerImage"
@@ -69,7 +69,7 @@ export default function HomeMain() {
                   </span>
                 </Link>
 
-                <h1 className="pl-3 text-ellipsis text-[15px]">
+                <h1 className="pl-3 py-1 text-ellipsis text-[15px]">
                   What i learned from trees
                 </h1>
                 <h3 className="pl-3  mb-4 text-gray-500 text-sm">

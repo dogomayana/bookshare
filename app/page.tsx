@@ -14,14 +14,11 @@ export default async function Home() {
     // console.log(JSON?.parse(po));
     // console.log(po);
     const decodedHeader = jwtDecode<JwtPayload>(po, { header: true });
-    console.log(decodedHeader?.iss);
+
     // const decoded = jwtDecode<JwtPayload>(po);
 
     // console.log(decoded);
   }
-
-  // let lop = await getQuestions();
-  // console.log(lop);
 
   return (
     <>
