@@ -9,7 +9,7 @@ import { createClient } from "@/app/utils/supabase/client";
 import Swal from "sweetalert2";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "@/app/config/firebase";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const router = useRouter();
