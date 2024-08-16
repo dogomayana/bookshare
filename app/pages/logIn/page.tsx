@@ -7,6 +7,8 @@ import Link from "next/link";
 import NavBar from "@/app/components/Navbar";
 import { createClient } from "@/app/utils/supabase/client";
 import Swal from "sweetalert2";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { app } from "@/app/config/firebase";
 
 export default function LogIn() {
   const supabase = createClient();
@@ -20,11 +22,35 @@ export default function LogIn() {
   const handleParagraphClick: ParagraphClickHandler = () => {
     setIsShown(!isShown);
   };
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(app);
+  auth.languageCode = "en";
 
+  function googlePop() {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+        console.log(user);
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  }
   const handleChange: ChangeHandler = (event) => {
     const { name, value } = event.target;
     setUserInfo((prev: any) => ({ ...prev, [name]: value }));
-    console.log(userInfo.fullName);
   };
   const data = {
     email: userInfo.emailAddress,
@@ -101,7 +127,7 @@ export default function LogIn() {
             value="Creat Account"
             className="p-3 bg-[#0095eb] hover:bg-black tColor w-full my-3 rounded-md text-sm"
           >
-            Login
+            {isLoading ? "Logining.." : "Login"}
           </button>
           <Link
             href={"/pages/resetPassword"}
@@ -110,7 +136,7 @@ export default function LogIn() {
             Forgot Password?
           </Link>
         </form>
-        <span className="w-full md:w-5/12 mt-4">
+        <span className="w-full md:w-5/12 mt-4" onClick={googlePop}>
           <GoogleBtn text={"Login with Google"} />
         </span>
         <p className="text-center mb-5 mt-4 text-sm">

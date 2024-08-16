@@ -15,13 +15,7 @@ export default function NavBar() {
     <>
       <nav className="w-full py-3 px-4 md:px-8 flex justify-between border-blue-50 border  bg-white">
         <Link href={"/"} className="text-base my-auto hover:text-[#0095eb]">
-          <Image
-            src="/jlogo.png"
-            alt="logo"
-            width={150}
-            height={50}
-            // className="borderr border-green-700"
-          />
+          <Image src="/jlogo.png" alt="logo" width={150} height={50} />
         </Link>
         <span className="hidden md:inline-flex md:justify-evenly  w-full md:space-x-10 ">
           <div className="flex space-x-5 my-auto">
@@ -60,7 +54,7 @@ export default function NavBar() {
             </Link>
             <Link
               className="text-sm font-medium p-2 rounded-md bg-[#0095eb] text-gray-100 hover:bg-white hover:text-[#0095eb]"
-              href={"/pages/LogIn"}
+              href={"/pages/logIn"}
             >
               Login
             </Link>
@@ -103,9 +97,6 @@ export default function NavBar() {
             >
               Donate Book
             </Link>
-            {/* <Link href={"/pages/dashboard"} className="text-center block ">
-              lllalka
-            </Link> */}
           </span>
 
           <div className="w-full flex justify-between my-4">

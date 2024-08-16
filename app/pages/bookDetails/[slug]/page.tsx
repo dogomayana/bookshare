@@ -16,7 +16,13 @@ export default function Page({ params }: { params: { slug: string } }) {
       <NavBar />
       <div className="w-full bg-white md:flex md:justify-between mt-10">
         <div className="md:w-4/12 md:h-screen md:grid md:place-item-center">
-          <span className="block h-[400px] w-[280px] md:w-[320px] mx-auto my-auto">
+          <Link
+            href={"/pages/allBooks"}
+            className="md:pl-10 pl-2 pt-3 pb-5 md:pb-0 block my-auto md:my-0 text-lg font-medium"
+          >
+            {" < "}See more books
+          </Link>
+          <span className="block h-[400px] w-[280px] md:w-[320px] mx-auto">
             <Image
               src={"/book3.png"}
               alt="bannerImage"

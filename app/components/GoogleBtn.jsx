@@ -1,6 +1,9 @@
 function GoogleButton({ text }) {
   return (
-    <div className="border border-blue-500 p-1 w-full flex rounded-md">
+    <div
+      // onClick={googlePop}
+      className="border border-blue-500 p-1 w-full flex rounded-md"
+    >
       <p className="pl-7">
         <svg
           xmlns="http://www.w3.org/2000/svg"

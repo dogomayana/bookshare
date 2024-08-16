@@ -1,9 +1,13 @@
+// "use client";
 import Link from "next/link";
 import DashNav from "../components/DashNav";
 import Image from "next/image";
 import CatNav from "../components/CatNav";
+import { mom } from "@/app/utils/firebase/getGoogleAuthUser";
+import { app } from "@/app/config/firebase";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-export default function Kop() {
+export default async function Kop() {
   const booksCatt = ["/book3.png", "/book4.png", "/book_1.png", "/book2.png"];
   return (
     <>

@@ -9,15 +9,12 @@ import { Comic_Neue, Lobster } from "next/font/google";
 const lobster = Comic_Neue({ weight: "400", subsets: ["latin"] });
 
 export default function HomeMain() {
-  const [swalShown, setSwalShown] = React.useState(false);
-
-  const showSwal = () => {
-    Swal.fire({
-      didOpen: () => setSwalShown(true),
-      didClose: () => setSwalShown(false),
-    });
-  };
-  const booksCat = ["/book3.png", "/book4.png", "/book_1.png", "/book2.png"];
+  const booksCat = [
+    { value: "travel", name: "Travel", imgSrc: "/book3.png" },
+    { value: "education", name: "Education", imgSrc: "/book4.png" },
+    { value: "tech", name: "Tech", imgSrc: "/book3.png" },
+    { value: "finance", name: "Finance", imgSrc: "/book3.png" },
+  ];
   const booksCatt = [
     "/book3.png",
     "/book4.png",
@@ -36,14 +33,18 @@ export default function HomeMain() {
           {booksCat.map((book, index) => (
             <span key={index} className="block p-3 border border-red-500">
               <Image
-                src={book}
+                src={book.imgSrc}
                 alt="bannerImage"
                 width={170}
                 height={171}
-                // style={{ width: "100%", height: "100%", objectFit: "fill" }}
                 priority={true}
               />
-              <p className="text-center">fiction</p>
+              <Link
+                href={`/pages/category/${book.value}`}
+                className="text-center"
+              >
+                {book.name}
+              </Link>
             </span>
           ))}
         </div>
@@ -63,7 +64,6 @@ export default function HomeMain() {
                       alt="bannerImage"
                       width={170}
                       height={171}
-                      // style={{ width: "100%", height: "100%", objectFit: "fill" }}
                       priority={true}
                     />
                   </span>
