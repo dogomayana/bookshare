@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
-
 import HamburgerIcon from "./HamburgerIcon";
 import React from "react";
 import Image from "next/image";
+import { useUser } from "@/app/context/userContext";
 
 export default function NavBar() {
+  const { user } = useUser();
+
   const [reveal, setReveal] = React.useState(false);
 
   function showDropdownContent() {
@@ -21,13 +23,15 @@ export default function NavBar() {
           <div className="flex space-x-5 my-auto">
             <Link
               className="text-sm font-medium text-gray-900 hover:text-[#0095eb]"
-              href={"/dashboard"}
+              href={user?.email !== null ? "/dashboard" : "/pages/signUp"}
             >
               Dashboard
             </Link>
             <Link
               className="text-sm font-medium text-gray-900 hover:text-[#0095eb]"
-              href={"/pages/donateBook"}
+              href={
+                user?.email !== null ? "/pages/donateBook" : "/pages/signUp"
+              }
             >
               Donate Book
             </Link>
@@ -44,21 +48,22 @@ export default function NavBar() {
               Contact
             </Link>
           </div>
-
-          <div className="flex space-x-8 my-auto">
-            <Link
-              className="text-sm font-medium p-2 rounded-md text-gray-900 hover:bg-[#0095eb] hover:text-gray-100"
-              href={"/pages/signUp"}
-            >
-              SignUp
-            </Link>
-            <Link
-              className="text-sm font-medium p-2 rounded-md bg-[#0095eb] text-gray-100 hover:bg-white hover:text-[#0095eb]"
-              href={"/pages/logIn"}
-            >
-              Login
-            </Link>
-          </div>
+          {typeof document !== undefined && user?.email == null && (
+            <div className="flex space-x-8 my-auto">
+              <Link
+                className="text-sm font-medium p-2 rounded-md text-gray-900 hover:bg-[#0095eb] hover:text-gray-100"
+                href={"/pages/signUp"}
+              >
+                SignUp
+              </Link>
+              <Link
+                className="text-sm font-medium p-2 rounded-md bg-[#0095eb] text-gray-100 hover:bg-white hover:text-[#0095eb]"
+                href={"/pages/logIn"}
+              >
+                Login
+              </Link>
+            </div>
+          )}
         </span>
 
         <button
@@ -86,7 +91,7 @@ export default function NavBar() {
         >
           <span className="block flex-col my-4 justify-items-center space-y-3 w-full">
             <Link
-              href={"/dashboard"}
+              href={user?.email !== null ? "/dashboard" : "/pages/signUp"}
               className="text-sm font-medium text-center block "
             >
               Dashboard
@@ -98,21 +103,22 @@ export default function NavBar() {
               Donate Book
             </Link>
           </span>
-
-          <div className="w-full flex justify-between my-4">
-            <Link
-              href={"/pages/logIn"}
-              className="w-5/12 bg-blue-100 text-[#0095eb] text-center text-sm font-semibold rounded-md p-3 block"
-            >
-              Log in
-            </Link>
-            <Link
-              href={"/pages/signUp"}
-              className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
-            >
-              Sign up
-            </Link>
-          </div>
+          {typeof document !== undefined && user?.email == null && (
+            <div className="w-full flex justify-between my-4">
+              <Link
+                href={"/pages/logIn"}
+                className="w-5/12 bg-blue-100 text-[#0095eb] text-center text-sm font-semibold rounded-md p-3 block"
+              >
+                Log in
+              </Link>
+              <Link
+                href={"/pages/signUp"}
+                className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
+              >
+                Sign up
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </>

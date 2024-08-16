@@ -1,7 +1,5 @@
 "use client";
-import { Icon } from "@iconify-icon/react";
-import { createPortal } from "react-dom";
-import Swal from "sweetalert2";
+
 import FoundItem from "@/app/components/FoundItem";
 import NoItem from "@/app/components/NoItem";
 
@@ -10,14 +8,16 @@ import NavBar from "./Navbar";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useUser } from "@/app/context/userContext";
 
 export default function HomePage() {
+  const { user } = useUser();
+
   const quickLinks = ["Home", "About Us", "Team", "Author", "Help"];
   const legals = ["My Acocunt", "Support", "Privacy Policy", "FAQ", "Terms"];
   const [search, setSearch] = React.useState<string>("");
   const [searchM, setSearchM] = React.useState<string>("");
   const [showModal, setShowModal] = React.useState(false);
-  const [swalShown, setSwalShown] = React.useState(false);
 
   const openModal = () => {
     if (typeof document !== undefined) {
@@ -31,13 +31,7 @@ export default function HomePage() {
     }
     setShowModal(false);
   };
-  const showSwal = () => {
-    Swal.fire({
-      didOpen: () => setSwalShown(true),
-      didClose: () => setSwalShown(false),
-      showConfirmButton: false,
-    });
-  };
+
   return (
     <>
       <NavBar />
@@ -93,16 +87,18 @@ export default function HomePage() {
 
           <div className="w-full flex justify-between mt-7 mb-4">
             <Link
-              href={"/pages/signUp"}
+              href={
+                user?.email !== null ? "/pages/donateBook" : "/pages/signUp"
+              }
               className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
             >
               Donate now
             </Link>
             <Link
-              href={"/pages/logIn"}
+              href={"/pages/allBooks"}
               className="w-5/12 bg-blue-100 text-[#0095eb] text-center text-sm font-semibold rounded-md p-3 block"
             >
-              Download now
+              Download a book
             </Link>
           </div>
         </div>
@@ -149,13 +145,15 @@ export default function HomePage() {
 
             <div className="w-full flex justify-between mt-7 mb-4">
               <Link
-                href={"/pages/signUp"}
+                href={
+                  user?.email !== null ? "/pages/donateBook" : "/pages/signUp"
+                }
                 className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
               >
                 Donate now
               </Link>
               <Link
-                href={"/pages/logIn"}
+                href={"/pages/allBooks"}
                 className="w-5/12 bg-blue-100 text-[#0095eb] text-center text-sm font-semibold rounded-md p-3 block"
               >
                 Download now

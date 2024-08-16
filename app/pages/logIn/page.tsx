@@ -9,8 +9,10 @@ import { createClient } from "@/app/utils/supabase/client";
 import Swal from "sweetalert2";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app } from "@/app/config/firebase";
+import { useRouter } from "next/router";
 
 export default function LogIn() {
+  const router = useRouter();
   const supabase = createClient();
   const [userInfo, setUserInfo] = React.useState<any>({
     emailAddress: "",
@@ -35,7 +37,10 @@ export default function LogIn() {
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
-        console.log(user);
+        // console.log(user);
+        if (user) {
+          router.push("/dashboard");
+        }
       })
       .catch((error) => {
         // Handle Errors here.

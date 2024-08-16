@@ -95,9 +95,11 @@ export default function HomeMain() {
         </article>
 
         <article className="mt-16">
-          <h1 className="text-center my-8 text-lg">About BookShare</h1>
+          <h1 className="text-center my-8 text-lg font-semibold">
+            About BookShare
+          </h1>
           <div className="md:flex md:w-11/12 w-full mx-auto justify-evenly p-3">
-            <div className="block w-full md:w-[360px]">
+            <div className="block w-full md:w-[520px]">
               <Image
                 src={"/Left.png"}
                 alt="bannerImage"
@@ -108,18 +110,15 @@ export default function HomeMain() {
               />
             </div>
 
-            <div className="w-full md:w-5/12">
-              <p className="text-sm p-3">
-                
-
-BookShare is a platform dedicated to promoting literacy
-and access to books for everyone. We believe that everyone
-should have the opportunity to read and learn, regardless of
-their financial situation. With our vast digital collection
-and user-friendly interface, we make it easy for people
-to donate books and browse our collection. Join us in our
-mission to spread the joy of reading
-
+            <div className="w-full md:w-5/12 md:my-auto">
+              <p className="text-sm md:text-base p-3">
+                BookShare is a platform dedicated to promoting literacy and
+                access to books for everyone. We believe that everyone should
+                have the opportunity to read and learn, regardless of their
+                financial situation. With our vast digital collection and
+                user-friendly interface, we make it easy for people to donate
+                books and browse our collection. Join us in our mission to
+                spread the joy of reading
               </p>
               <Link
                 href={"#"}
@@ -151,17 +150,13 @@ mission to spread the joy of reading
               <h1 className="text-lg text-center my-4 text-white">
                 Easy Book Donation
               </h1>
-             
-
-
-
 
               <p className="text-center text-sm text-white">
-
-BookShare makes donating books easy and convenient. Simply search for the book you want to donate, click &apos;Donate&apos;, and we&apos;ll take care of the rest. Your book will find a new home, and you&apos;ll be supporting literacy and education.
-
-
-
+                BookShare makes donating books easy and convenient. Simply
+                search for the book you want to donate, click
+                &apos;Donate&apos;, and we&apos;ll take care of the rest. Your
+                book will find a new home, and you&apos;ll be supporting
+                literacy and education.
               </p>
             </div>
             <div className="p-3 ">
@@ -180,12 +175,11 @@ BookShare makes donating books easy and convenient. Simply search for the book y
               </h1>
 
               <p className="text-center text-sm text-white">
-                
-
-BookShare offers a vast digital collection of books, including classics, bestsellers, and rare titles. Our collection is constantly growing, and you can access it all in one place. Whether you&apos;re a reader, researcher, or student, we&apos;ve got you covered.
-
-
-                
+                BookShare offers a vast digital collection of books, including
+                classics, bestsellers, and rare titles. Our collection is
+                constantly growing, and you can access it all in one place.
+                Whether you&apos;re a reader, researcher, or student, we&apos;ve
+                got you covered.
               </p>
             </div>
             <div className="p-3">
@@ -204,12 +198,10 @@ BookShare offers a vast digital collection of books, including classics, bestsel
               </h1>
 
               <p className="text-center text-sm text-white">
-                
-
-
-Our intuitive and user-friendly interface makes it easy to find and discover new books. Browse by genre, author, or title, and filter results to find exactly what you&apos;re looking for. Reading has never been more enjoyable and accessible.
-
-                
+                Our intuitive and user-friendly interface makes it easy to find
+                and discover new books. Browse by genre, author, or title, and
+                filter results to find exactly what you&apos;re looking for.
+                Reading has never been more enjoyable and accessible.
               </p>
             </div>
           </div>
