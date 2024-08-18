@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Provider from "@/app/context/providerWrapper";
 import "./globals.css";
-import NavBar from "./components/Navbar";
+import { Toaster } from "sonner";
 
 const poppins = Poppins({ weight: "400", subsets: ["latin"] });
 
@@ -18,12 +18,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Provider>
-        <body className={poppins.className}>
-          {/* <NavBar /> */}
-          <span className="block">{children}</span>
-        </body>
-      </Provider>
+      <body className={poppins.className}>
+        <Provider>
+          {typeof document !== undefined && (
+            <span className="block">
+              {children}
+
+              <Toaster />
+            </span>
+          )}
+        </Provider>
+      </body>
     </html>
   );
 }

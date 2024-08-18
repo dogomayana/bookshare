@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useUser } from "@/app/context/userContext";
+import { toast } from "sonner";
 
 export default function HomePage() {
   const { user } = useUser();
@@ -43,12 +44,15 @@ export default function HomePage() {
           <h1 className="text-2xl font-semibold my-8 text-center">
             Unlock a World of Stories.{" "}
             <Link
-              href={"/pages/donateBook"}
+              href={user ? "/pages/donateBook" : "/pages/signUp"}
               className="text-[#0095eb] underline"
             >
               Donate,
             </Link>{" "}
             <span className="text-[#0095eb]">Access, Read.</span>
+            {/* <button onClick={() => toast("This is a sonner toast")}>
+              Render my toast
+            </button> */}
           </h1>
           <Image
             src="/banner.png"
@@ -87,9 +91,7 @@ export default function HomePage() {
 
           <div className="w-full flex justify-between mt-7 mb-4">
             <Link
-              href={
-                user?.email !== null ? "/pages/donateBook" : "/pages/signUp"
-              }
+              href={user ? "/pages/donateBook" : "/pages/signUp"}
               className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
             >
               Donate now
@@ -114,7 +116,7 @@ export default function HomePage() {
             <h1 className="text-2xl my-8 ">
               Unlock a World of Stories.{" "}
               <Link
-                href={"/pages/donateBook"}
+                href={user ? "/pages/donateBook" : "/pages/signUp"}
                 className="text-[#0095eb] underline"
               >
                 Donate,
@@ -145,9 +147,7 @@ export default function HomePage() {
 
             <div className="w-full flex justify-between mt-7 mb-4">
               <Link
-                href={
-                  user?.email !== null ? "/pages/donateBook" : "/pages/signUp"
-                }
+                href={user ? "/pages/donateBook" : "/pages/signUp"}
                 className="w-5/12 bg-[#0095eb] text-gray-100 text-center text-sm font-semibold rounded-md p-3 block"
               >
                 Donate now

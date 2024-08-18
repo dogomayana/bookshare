@@ -7,7 +7,12 @@ import Link from "next/link";
 import NavBar from "@/app/components/Navbar";
 import { createClient } from "@/app/utils/supabase/client";
 import Swal from "sweetalert2";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
 import { app } from "@/app/config/firebase";
 import { useRouter } from "next/navigation";
 
@@ -37,6 +42,73 @@ export default function SignUp() {
   const auth = getAuth(app);
   auth.languageCode = "en";
 
+  const googleEmail = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        userInfo.emailAddress,
+        userInfo.password
+      );
+      // Signed in
+      const user = userCredential.user;
+
+      const { error }: any = await supabase.from("bookshare_users").insert({
+        email: userInfo.emailAddress,
+        fullName: userInfo.fullName,
+        phoneNum: userInfo.phoneNumber,
+      });
+      if (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `Something went wrong! ${error?.message}`,
+        });
+      }
+      console.log("User signed in:", user);
+      if (user) {
+        router.push("/dashboard");
+      }
+      //
+    } catch (error: any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("Error signing in:", errorCode, errorMessage);
+    }
+    // createUserWithEmailAndPassword(
+    //   auth,
+    //   userInfo.emailAddress,
+    //   userInfo.password
+    // )
+    //   .then((userCredential) => {
+    //     // Signed up
+    //     const user = userCredential.user;
+    //     const { error }: any = supabase.from("bookshare_users").insert({
+    //       email: userInfo.emailAddress,
+    //       fullName: userInfo.fullName,
+    //       phoneNum: userInfo.phoneNumber,
+    //     });
+    //     if (error) {
+    //       Swal.fire({
+    //         icon: "error",
+    //         title: "Oops...",
+    //         text: `Something went wrong! ${error?.message}`,
+    //       });
+    //     }
+    //     if (user) {
+    //       router.push("/dashboard");
+    //     }
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // ..
+    //   });
+
+    setIsLoading(false);
+  };
   function googlePop() {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -90,7 +162,7 @@ export default function SignUp() {
           </p>
         </div>
         <form
-          onSubmit={submitForm}
+          onSubmit={googleEmail}
           className="w-full p-1 md:w-6/12 mx-auto md:p-2"
         >
           <label htmlFor="Full Name" className="block">

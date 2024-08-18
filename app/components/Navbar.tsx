@@ -23,15 +23,13 @@ export default function NavBar() {
           <div className="flex space-x-5 my-auto">
             <Link
               className="text-sm font-medium text-gray-900 hover:text-[#0095eb]"
-              href={user?.email !== null ? "/dashboard" : "/pages/signUp"}
+              href={user ? "/dashboard" : "/pages/signUp"}
             >
               Dashboard
             </Link>
             <Link
               className="text-sm font-medium text-gray-900 hover:text-[#0095eb]"
-              href={
-                user?.email !== null ? "/pages/donateBook" : "/pages/signUp"
-              }
+              href={user ? "/pages/donateBook" : "/pages/signUp"}
             >
               Donate Book
             </Link>
@@ -48,22 +46,22 @@ export default function NavBar() {
               Contact
             </Link>
           </div>
-          {typeof document !== undefined && user?.email == null && (
-            <div className="flex space-x-8 my-auto">
-              <Link
-                className="text-sm font-medium p-2 rounded-md text-gray-900 hover:bg-[#0095eb] hover:text-gray-100"
-                href={"/pages/signUp"}
-              >
-                SignUp
-              </Link>
-              <Link
-                className="text-sm font-medium p-2 rounded-md bg-[#0095eb] text-gray-100 hover:bg-white hover:text-[#0095eb]"
-                href={"/pages/logIn"}
-              >
-                Login
-              </Link>
-            </div>
-          )}
+
+          <div className={user ? "hidden" : `flex space-x-8 my-auto`}>
+            <Link
+              className="text-sm font-medium p-2 rounded-md text-gray-900 hover:bg-[#0095eb] hover:text-gray-100"
+              href={"/pages/signUp"}
+            >
+              SignUp
+            </Link>
+            <Link
+              className="text-sm font-medium p-2 rounded-md bg-[#0095eb] text-gray-100 hover:bg-white hover:text-[#0095eb]"
+              href={"/pages/logIn"}
+            >
+              Login
+            </Link>
+          </div>
+          {/* )} */}
         </span>
 
         <button
@@ -91,19 +89,19 @@ export default function NavBar() {
         >
           <span className="block flex-col my-4 justify-items-center space-y-3 w-full">
             <Link
-              href={user?.email !== null ? "/dashboard" : "/pages/signUp"}
+              href={user ? "/dashboard" : "/pages/signUp"}
               className="text-sm font-medium text-center block "
             >
               Dashboard
             </Link>
             <Link
-              href={"/pages/donateBook"}
+              href={user ? "/pages/donateBook" : "/pages/signUp"}
               className="text-sm font-medium text-center block py-2"
             >
               Donate Book
             </Link>
           </span>
-          {typeof document !== undefined && user?.email == null && (
+          {!user && (
             <div className="w-full flex justify-between my-4">
               <Link
                 href={"/pages/logIn"}

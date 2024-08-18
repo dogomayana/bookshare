@@ -4,8 +4,21 @@ import { Icon } from "@iconify-icon/react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { app } from "../config/firebase";
+import { getAuth, signOut } from "firebase/auth";
 export default function SideNav() {
+  const auth = getAuth(app);
+
   const pathname = usePathname();
+  function logOut() {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  }
   return (
     <div className="hidden md:block md:p-4 md:fixed md:bg-white md:h-screen md:left-0 md:flex-none md:w-64">
       <Link href={"/"} className="text-base my-auto hover:text-[#0095eb]">
@@ -101,9 +114,9 @@ export default function SideNav() {
           <Link href={"#"} className="block my-4 text-sm">
             Settings
           </Link>
-          <Link href={"#"} className="block text-sm">
+          <button onClick={logOut} className="block text-sm">
             Log Out
-          </Link>
+          </button>
         </div>
       </div>
     </div>

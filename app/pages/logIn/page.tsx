@@ -1,5 +1,4 @@
 "use client";
-
 import { ChangeHandler, ParagraphClickHandler } from "@/app/eventTypes";
 import GoogleBtn from "../../components/GoogleBtn";
 import React from "react";
@@ -7,12 +6,25 @@ import Link from "next/link";
 import NavBar from "@/app/components/Navbar";
 import { createClient } from "@/app/utils/supabase/client";
 import Swal from "sweetalert2";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { app } from "@/app/config/firebase";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/app/context/userContext";
 
 export default function LogIn() {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth(app);
+  auth.languageCode = "en";
   const router = useRouter();
+  const { user } = useUser();
+  if (typeof document !== undefined && user) {
+    router.push("/dashboard");
+  }
   const supabase = createClient();
   const [userInfo, setUserInfo] = React.useState<any>({
     emailAddress: "",
@@ -24,20 +36,30 @@ export default function LogIn() {
   const handleParagraphClick: ParagraphClickHandler = () => {
     setIsShown(!isShown);
   };
-  const provider = new GoogleAuthProvider();
-  const auth = getAuth(app);
-  auth.languageCode = "en";
 
+  const googleLogIn = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    signInWithEmailAndPassword(auth, userInfo.emailAddress, userInfo.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+    setIsLoading(false);
+  };
   function googlePop() {
     signInWithPopup(auth, provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
-        // The signed-in user info.
+
         const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-        // console.log(user);
+
         if (user) {
           router.push("/dashboard");
         }
@@ -52,6 +74,7 @@ export default function LogIn() {
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
+    setIsLoading(false);
   }
   const handleChange: ChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -87,7 +110,7 @@ export default function LogIn() {
           </p>
         </div>
         <form
-          onSubmit={submitForm}
+          onSubmit={googleLogIn}
           className="w-full p-1 md:w-6/12 mx-auto md:p-2"
         >
           <label htmlFor="Email Address" className="block my-5">
