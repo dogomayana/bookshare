@@ -6,18 +6,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { app } from "../config/firebase";
 import { getAuth, signOut } from "firebase/auth";
+import Swal from "sweetalert2";
 export default function SideNav() {
   const auth = getAuth(app);
 
   const pathname = usePathname();
-  function logOut() {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
+  async function logOut() {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result: any) => {
+        signOut(auth);
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
+        }
       });
+    } catch (error) {}
+    // signOut(auth)
+    //   .then(() => {
+    //     // Sign-out successful.
+    //   })
+    //   .catch((error) => {
+    //     // An error happened.
+    //   });
   }
   return (
     <div className="hidden md:block md:p-4 md:fixed md:bg-white md:h-screen md:left-0 md:flex-none md:w-64">

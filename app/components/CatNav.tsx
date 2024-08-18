@@ -6,21 +6,40 @@ import { Icon } from "@iconify-icon/react";
 import { usePathname } from "next/navigation";
 import HamburgerIcon from "./HamburgerIcon";
 import React from "react";
+import { getAuth, signOut } from "firebase/auth";
+import Swal from "sweetalert2";
+import { app } from "../config/firebase";
 
 export default function CatNav() {
+  const auth = getAuth(app);
+
   const pathname = usePathname();
 
   const [reveal, setReveal] = React.useState(false);
 
   function showDropdownContent() {
-    // if (typeof document !== undefined) {
-    //   document.body.style.overflow = "hidden";
-    // }
     setReveal(!reveal);
+  }
+  async function logOut() {
+    try {
+      Swal.fire({
+        title: "You are about to log out?",
 
-    // if (reveal === true && typeof document !== undefined) {
-    //   document.body.style.overflow = "auto";
-    // }
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Log Out",
+      }).then((result: any) => {
+        signOut(auth);
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Logged Out",
+            icon: "success",
+          });
+        }
+      });
+    } catch (error) {}
   }
   return (
     <>
@@ -182,9 +201,9 @@ export default function CatNav() {
               <Link href={"#"} className="block my-2 p-2 text-[14px]">
                 Settings
               </Link>
-              <Link href={"#"} className="block my-2 p-2 text-[14px]">
+              <button onClick={logOut} className="block my-2 p-2 text-[14px]">
                 Log Out
-              </Link>
+              </button>
             </div>
             {/* </div> */}
           </div>
