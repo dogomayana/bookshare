@@ -22,8 +22,9 @@ export default function SideNav() {
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, delete it!",
       }).then((result: any) => {
-        signOut(auth);
+        
         if (result.isConfirmed) {
+          signOut(auth);
           Swal.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",
