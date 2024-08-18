@@ -31,8 +31,9 @@ export default function CatNav() {
         cancelButtonColor: "#d33",
         confirmButtonText: "Log Out",
       }).then((result: any) => {
-        signOut(auth);
+        
         if (result.isConfirmed) {
+          signOut(auth);
           Swal.fire({
             title: "Logged Out",
             icon: "success",
