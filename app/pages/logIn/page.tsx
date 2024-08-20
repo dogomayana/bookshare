@@ -22,9 +22,9 @@ export default function LogIn() {
   auth.languageCode = "en";
   const router = useRouter();
   const { user } = useUser();
-  {/*if (typeof document !== undefined && user) {
+  if (typeof document !== undefined && user) {
     router.push("/dashboard");
-  }*/}
+  }
   const supabase = createClient();
   const [userInfo, setUserInfo] = React.useState<any>({
     emailAddress: "",
